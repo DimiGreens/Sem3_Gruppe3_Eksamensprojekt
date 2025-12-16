@@ -1,0 +1,20 @@
+<script setup>
+import { Splide, SplideSlide } from '@splidejs/vue-splide'
+import '@splidejs/vue-splide/css'
+</script>
+
+<template>
+  <Header />
+  <h1>Menu</h1>
+
+  <Splide :options="{ perPage: 1, gap: '1rem', rewind: true }">
+    <SplideSlide>Slide 1</SplideSlide>
+    <SplideSlide>Slide 2</SplideSlide>
+  </Splide>
+
+  <Footer />
+</template>
+
+<style scoped>
+
+</style>

@@ -1,74 +1,117 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue'
 
-const isOpen = ref(false);
+const isOpen = ref(false)
+const isMobile = ref(false)
 
-const openNav = () => {
-    isOpen.value = true
+const checkScreen = () => {
+  isMobile.value = window.innerWidth < 700
+  if (!isMobile.value) isOpen.value = true
+}
+
+onMounted(() => {
+  checkScreen()
+  window.addEventListener('resize', checkScreen)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', checkScreen)
+})
+
+const toggleNav = () => {
+  isOpen.value = !isOpen.value
 }
 
 const closeNav = () => {
-    isOpen.value = false
+  isOpen.value = false
 }
-
 </script>
 
 <template>
-    <header>
-        <p>LOGO</p>
-        <button @click="openNav">Open</button>
-    </header>
+  <header>
+    <p>LOGO</p>
+    <button v-if="isMobile" @click="toggleNav">Åben</button>
+  </header>
 
-    <transition name="slide">
-        <nav v-if="isOpen">
-            <button @click="closeNav">Close</button>
-            <NuxtLink to="/" @click="closeNav">Home</NuxtLink>
-            <NuxtLink to="/about" @click="closeNav">About</NuxtLink>
-            <NuxtLink to="/menu" @click="closeNav">Menu</NuxtLink>
-        </nav>
-    </transition>
+  <transition name="slide">
+    <nav v-show="isOpen" class="nav">
+      <button v-if="isMobile" class="close-btn" @click="closeNav">Luk</button>
+      
+      <NuxtLink to="/" @click="isMobile && closeNav()">Home</NuxtLink>
+      <NuxtLink to="/about" @click="isMobile && closeNav()">About</NuxtLink>
+      <NuxtLink to="/menu" @click="isMobile && closeNav()">Menu</NuxtLink>
+    </nav>
+  </transition>
 </template>
 
 <style scoped>
-header{
-    display: flex;
-    justify-content: space-between;
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
-button{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
-nav{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 99;
+.nav {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: grey;
+  width: 60vw;
+  height: 100vh;
+  z-index: 99;
+}
+
+.nav a {
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.slide-enter-active, .slide-leave-active {
+  transition: transform 0.3s ease;
+}
+
+.slide-enter-from, .slide-leave-to {
+  transform: translateX(100%);
+}
+
+@media screen and (min-width: 700px) {
+  header {
     background-color: grey;
-    height: 100vh;
-    width: 60vw;
-}
+  }
 
-nav button{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
+  .nav {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    width: auto;
+    height: auto;
+    transform: none;
+    background-color: transparent;
+  }
 
-.slide-enter-active, .slide-leave-active{
-    transition: transform 0.3s ease;
-}
+  .nav a {
+    margin: 0 1rem;
+  }
 
-.slide-enter-from, .slide-leave-to{
-    transform: translateX(100%);
-}
-
-nav a{
-    padding: 1rem;
-    margin: 0.5rem;
+  button {
+    display: none;
+  }
 }
 </style>

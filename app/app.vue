@@ -3,13 +3,11 @@
 </script>
 
 <template>
-<div>
+
     <NuxtRouteAnnouncer />
-    <NuxtLink to="/">Home</NuxtLink>
-    <NuxtLink to="/about">About</NuxtLink>
-    <NuxtLink to="/menu">Menu</NuxtLink>
+    <Navbar />
     <NuxtPage />
-  </div>
+    
 </template>
 
 <style scoped>

@@ -4,7 +4,6 @@ import '@splidejs/vue-splide/css'
 </script>
 
 <template>
-  <Header />
   <h1>Menu</h1>
 
   <Splide :options="{ perPage: 1, gap: '1rem', rewind: true }">

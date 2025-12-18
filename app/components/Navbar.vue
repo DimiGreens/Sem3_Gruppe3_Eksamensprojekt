@@ -59,6 +59,8 @@ button {
 
 .nav {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   position: absolute;
   top: 0;

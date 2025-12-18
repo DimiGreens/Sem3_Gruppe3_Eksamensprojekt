@@ -22,3 +22,7 @@
     --purpleMenuMain: #c7b1e7;
     --purpleMenuSecondary: #b99de1;
 }
+
+body{
+    margin: 0;
+}

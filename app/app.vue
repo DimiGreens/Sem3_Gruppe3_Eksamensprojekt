@@ -4,9 +4,10 @@
 
 <template>
 
+    <Header />
     <NuxtRouteAnnouncer />
-    <Navbar />
     <NuxtPage />
+    <Footer />
     
 </template>
 

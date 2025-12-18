@@ -1,9 +1,16 @@
 :root{
+    /* Nav farver */
     --navGray: #1d1d1b;
+
+    /* Baggrund farver */
     --backgroundPink: #fb9fc4;
+
+    /* Knapper farver */
     --buttonsBlue: #39afa5;
     --buttonsHoverBlue: #65c6bc;
     --headerCircleButtons: #4fbbb2;
+
+    /* Menu farver */
     --orangeMenuMain: #f4c4a4;
     --orangeMenuSecondary: #f5b093;
     --yellowMenuMain: #f6dfa2;

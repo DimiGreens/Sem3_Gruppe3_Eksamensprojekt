@@ -1,0 +1,17 @@
+:root{
+    --navGray: #1d1d1b;
+    --backgroundPink: #fb9fc4;
+    --buttonsBlue: #39afa5;
+    --buttonsHoverBlue: #65c6bc;
+    --headerCircleButtons: #4fbbb2;
+    --orangeMenuMain: #f4c4a4;
+    --orangeMenuSecondary: #f5b093;
+    --yellowMenuMain: #f6dfa2;
+    --yellowMenuSecondary: #f4d78b;
+    --greenMenuMain: #c4e3b5;
+    --greenMenuSecondary: #b4d6a4;
+    --blueMenuMain: #acd0ec;
+    --blueMenuSecondary: #97c4e7;
+    --purpleMenuMain: #c7b1e7;
+    --purpleMenuSecondary: #b99de1;
+}

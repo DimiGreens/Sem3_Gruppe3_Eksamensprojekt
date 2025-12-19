@@ -67,13 +67,15 @@ button {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: grey;
+  background-color: var(--navGray);
   width: 60vw;
   height: 100vh;
   z-index: 99;
 }
 
 .nav a {
+  color: white;
+  text-decoration: none;
   padding: 1rem;
   margin: 0.5rem;
 }

@@ -123,13 +123,22 @@ onMounted(() => {
   position: absolute;
   inset: 0;
   padding: 1.5rem;
-  background: #eee;
+
+  background: repeating-linear-gradient(
+    90deg,
+    #f4c4a4,
+    #f4c4a4 20px,
+    #f5b093 20px,
+    #f5b093 40px
+  );
+
   transform-origin: left center;
   transform: rotateY(0deg);
-  transition: transform 0.6s ease;
+  transition: transform 0.6s ease, opacity 0.3s ease;
   backface-visibility: hidden;
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
+
 
 /* Den side der flipper væk (næste) */
 .page.flip {

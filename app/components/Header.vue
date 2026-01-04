@@ -51,6 +51,7 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+  background-color: var(--navGray);
 }
 
 button {

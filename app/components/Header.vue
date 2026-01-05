@@ -42,6 +42,7 @@ const closeNav = () => {
       <NuxtLink to="/book" @click="isMobile && closeNav()">Book bord</NuxtLink>
       <NuxtLink to="/events" @click="isMobile && closeNav()">Events</NuxtLink>
       <NuxtLink to="/about" @click="isMobile && closeNav()">Om os</NuxtLink>
+      <NuxtLink to="/contact" @click="isMobile && closeNav()">Kontakt</NuxtLink>
     </nav>
   </transition>
 </template>

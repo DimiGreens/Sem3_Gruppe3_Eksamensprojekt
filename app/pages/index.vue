@@ -1,20 +1,32 @@
 <script setup>
+import { Splide, SplideSlide } from '@splidejs/vue-splide';
+import '@splidejs/splide/dist/css/splide.min.css';
 
+const slides = [
+  'https://unsplash.it/300?1',
+  'https://unsplash.it/300?2',
+  'https://unsplash.it/300?3',
+];
 </script>
 
 <template>
     <main>
         <p>I dag har vi åbnet 11:00 - 23:30</p>
-        <p>BILLEDE SLIDER</p>
-        <h1>Velkommen :)</h1>
+         <!-- Splide Slider -->
+    <Splide :options="{ type: 'loop', autoplay: true, interval: 6000 }">
+      <SplideSlide v-for="(img, index) in slides" :key="index">
+        <img :src="img" :alt="'Slide ' + (index + 1)" />
+      </SplideSlide>
+    </Splide>
+        <h1>Velkommen!</h1>
         <section>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae perspiciatis deleniti, eligendi hic repellat excepturi sequi dolore voluptates id sapiente illo rem ab recusandae eaque corrupti asperiores nemo quas numquam necessitatibus tempore soluta debitis labore nihil. Aliquam dolorum nihil facilis dignissimos eius accusamus veniam. Nostrum asperiores dolorem modi tempore voluptatem?</p>
-            <a href="#">Om os</a>
+            <Button label="Om os" to="/about" />
         </section>
         <section>
             <h2>Vi serverer god mad</h2>
             <Book />
-            <a href="">Se menuerne</a>
+            <Button label="Se menuerne" to="/menu" />
             <h3>Og lækre studie-tilbud!</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur eveniet maxime deleniti nemo error distinctio.</p>
             <section class="ret">
@@ -37,7 +49,7 @@
         <section>
             <h3>Book bord</h3>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, in assumenda eaque alias at soluta magni, repudiandae, ut aspernatur quo sequi consequatur! Cum, minus autem!</p>
-            <a href="#">Se bordplan</a>
+            <Button label="Se bordplan" to="/book" />
         </section>
         <section>
             <h3>Ulla's playliste</h3>
@@ -47,6 +59,11 @@
 </template>
 
 <style scoped>
+    .splide__slide img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
 section{
     margin: 1rem 0;
 }

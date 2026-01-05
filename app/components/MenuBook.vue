@@ -1,17 +1,22 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 
-const pages = ref([
-  { title: 'Test 1', content: 'Lorem ipsum dolor sit amet consectetur.' },
-  { title: 'Test 2', content: 'Repellendus, non! Lorem ipsum dolor.' },
-  { title: 'Test 3', content: 'En tredje side med tekst.' }
-])
+// Modtag sider som prop
+const props = defineProps({
+  pages: {
+    type: Array,
+    required: true,
+    default: () => []
+  },
+  colors: {
+    type: Array,
+    default: () => ['#f4c4a4', '#f5b093'] // standardfarver hvis ingen angivet
+  }
+})
 
 const currentPage = ref(0)
-
-const totalPages = computed(() => pages.value.length)
-
 const direction = ref('next')
+const totalPages = computed(() => props.pages.length)
 
 const nextPage = () => {
   if (currentPage.value < totalPages.value - 1) {
@@ -34,14 +39,13 @@ onMounted(() => {
     if (e.key === 'ArrowLeft') prevPage()
   })
 })
-
 </script>
 
 <template>
 <div class="book-wrapper">
   <article class="book" aria-label="Menu bog">
     <section
-      v-for="(page, index) in pages"
+      v-for="(page, index) in props.pages"
       :key="index"
       class="page"
       :class="{
@@ -49,27 +53,44 @@ onMounted(() => {
         flip: index === currentPage - 1 && direction === 'next',
         flipBack: index === currentPage + 1 && direction === 'prev'
       }"
+      :style="{
+  background: `repeating-linear-gradient(
+    90deg,
+    ${props.colors[0]} 0px,
+    ${props.colors[0]} 20px,
+    ${props.colors[1]} 20px,
+    ${props.colors[1]} 40px
+  )`
+}"
     >
       <h2>{{ page.title }}</h2>
-      <p>{{ page.content }}</p>
+      <!-- Liste af retter / afsnit -->
+      <ul>
+        <li v-for="(item, i) in page.items" :key="i">
+         {{ item.name }} {{ item.price }},-
+       </li>
+      </ul>
     </section>
   </article>
 
   <!-- Bogmærker -->
   <nav class="bookmarks">
     <button
-      v-for="(page, index) in pages"
+      v-for="(page, index) in props.pages"
       :key="index"
       class="bookmark"
       :class="{ active: index === currentPage }"
-      :style="{ top: `${index * 52}px` }"
+      :style="{ top: `${index * 52}px`,
+    background: index === currentPage ? props.colors[1] : props.colors[0],
+    color: '#fff'
+  }"
       @click="currentPage = index"
+      
     >
-      Side {{ index + 1 }}
+    {{ page.title }}
     </button>
   </nav>
 </div>
-
 
 <!-- Navigation -->
 <nav class="controls" aria-label="Bladre navigation">
@@ -87,10 +108,10 @@ onMounted(() => {
     Næste
   </button>
 </nav>
-
 </template>
 
 <style scoped>
+/* (Her kan du beholde dit eksisterende CSS uden ændringer) */
 .book-wrapper {
   position: relative;
   width: fit-content;
@@ -123,7 +144,7 @@ onMounted(() => {
 /* Individuelle bogmærker */
 .bookmark {
   width: 40px;
-  height: 72px;
+  height: 80px;
 
   background: #c45a3c;
   color: #fff;
@@ -133,8 +154,7 @@ onMounted(() => {
 
   border: none;
   border-radius: 0 6px 6px 0;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-
+  
   cursor: pointer;
 
   writing-mode: vertical-rl;
@@ -185,13 +205,13 @@ onMounted(() => {
   inset: 0;
   padding: 1.5rem;
 
-  background: repeating-linear-gradient(
+  /* background: repeating-linear-gradient(
     90deg,
     #f4c4a4,
     #f4c4a4 20px,
     #f5b093 20px,
     #f5b093 40px
-  );
+  ); */
 
   transform-origin: left center;
   transform: rotateY(0deg);

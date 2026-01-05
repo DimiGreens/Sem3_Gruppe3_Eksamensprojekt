@@ -40,7 +40,11 @@ footer{
 }
 
 .info p{
-    margin: 0;
+    margin: 0 10px;
+}
+
+.info h4{
+    margin: 10px 10px
 }
 
 .footerLinks{

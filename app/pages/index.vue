@@ -1,6 +1,18 @@
 <script setup>
+import MenuBook from '~/components/MenuBook.vue';
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
+
+const kat = [
+  {
+    title: 'Morgenmad',
+    items: [
+      { name: 'Æg', price: 45 },
+      { name: 'Bacon', price: 25 },
+      { name: 'Ost', price: 75 },
+      { name: 'Ost', price: 75 },
+    ],
+  }]
 
 const slides = [
   'https://unsplash.it/300?1',
@@ -25,7 +37,7 @@ const slides = [
         </section>
         <section>
             <h2>Vi serverer god mad</h2>
-            <Book />
+            <MenuBook :pages="kat"/>
             <Button label="Se menuerne" to="/menu" />
             <h3>Og lækre studie-tilbud!</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur eveniet maxime deleniti nemo error distinctio.</p>

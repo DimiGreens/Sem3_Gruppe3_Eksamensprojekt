@@ -90,24 +90,22 @@ onMounted(() => {
     {{ page.title }}
     </button>
   </nav>
+  <nav class="controls" aria-label="Bladre navigation">
+    <button
+      @click="prevPage"
+      :disabled="currentPage === 0"
+    >
+      Forrige
+    </button>
+  
+    <button
+      @click="nextPage"
+      :disabled="currentPage === totalPages - 1"
+    >
+      Næste
+    </button>
+  </nav>
 </div>
-
-<!-- Navigation -->
-<nav class="controls" aria-label="Bladre navigation">
-  <button
-    @click="prevPage"
-    :disabled="currentPage === 0"
-  >
-    Forrige
-  </button>
-
-  <button
-    @click="nextPage"
-    :disabled="currentPage === totalPages - 1"
-  >
-    Næste
-  </button>
-</nav>
 </template>
 
 <style scoped>

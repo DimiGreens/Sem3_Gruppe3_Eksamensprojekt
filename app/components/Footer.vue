@@ -5,7 +5,7 @@
 <template>
 <footer>
     <section class="footerLinks">
-        <p>LOGO</p>
+        <img src="../assets/img/CafeLogo.png" alt="Cafe logo" class="cafeLogo">
         <div class="SoMe">
             <FontAwesomeIcon class="icon" :icon="['fab', 'facebook']" />
             <FontAwesomeIcon class="icon" :icon="['fab', 'instagram']" />
@@ -32,7 +32,8 @@
 <style scoped>
 
 .icon{
-    background-color: pink;
+    width: 40px;
+    height: 40px;
 }
 
 footer{
@@ -51,6 +52,11 @@ footer{
     margin: 10px 10px
 }
 
+.cafeLogo{
+    width: 70px;
+    height: 50px;
+}
+
 .footerLinks{
     display: flex;
     justify-content: space-between;
@@ -58,6 +64,8 @@ footer{
     color: var(--backgroundPink);
     .SoMe{
         display: flex;
+        align-items: center;
+        justify-content: center;
         gap: 2rem;
     }
 }

@@ -29,7 +29,7 @@ const closeNav = () => {
 
 <template>
   <header>
-    <p>LOGO</p>
+    <img src="../assets/img/CafeLogo.png" alt="Cafe logo" class="cafeLogo">
     <button v-if="isMobile" @click="toggleNav">Åben</button>
   </header>
 
@@ -48,6 +48,11 @@ const closeNav = () => {
 </template>
 
 <style scoped>
+.cafeLogo{
+width: 70px;
+height: 50px;
+}
+
 header {
   display: flex;
   justify-content: space-between;

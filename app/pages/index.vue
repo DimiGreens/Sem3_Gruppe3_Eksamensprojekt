@@ -16,6 +16,7 @@ const kat = [
 
 <template>
     <main>
+      <Slider />
         <p>I dag har vi åbnet 11:00 - 23:30</p>
         <div class="writingHolder">
           <Writing />

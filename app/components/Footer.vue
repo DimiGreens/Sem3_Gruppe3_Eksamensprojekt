@@ -5,7 +5,7 @@
 <template>
 <footer>
     <section class="footerLinks">
-        <img src="../assets/img/CafeLogo.png" alt="Cafe logo" class="cafeLogo">
+        <img src="../assets/img/ullaTLogo.jpg" alt="Cafe logo" class="cafeLogo">
         <div class="SoMe">
             <FontAwesomeIcon class="icon" :icon="['fab', 'facebook']" />
             <FontAwesomeIcon class="icon" :icon="['fab', 'instagram']" />
@@ -53,8 +53,8 @@ footer{
 }
 
 .cafeLogo{
-    width: 70px;
-    height: 50px;
+    width: 100px;
+    height: 80px;
 }
 
 .footerLinks{

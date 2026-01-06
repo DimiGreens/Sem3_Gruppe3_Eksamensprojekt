@@ -29,41 +29,53 @@ const closeNav = () => {
 
 <template>
   <header>
-    <img src="../assets/img/CafeLogo.png" alt="Cafe logo" class="cafeLogo">
-    <button v-if="isMobile" @click="toggleNav">Åben</button>
+    <img src="../assets/img/ullaTLogo.jpg" alt="Cafe logo" class="cafeLogo">
+    <button v-if="isMobile" @click="toggleNav"><FontAwesomeIcon :icon="['fas', 'bars']" class="fontIcon" /></button>
+    <transition name="slide">
+      <nav v-show="isOpen" class="nav">
+        <button v-if="isMobile" class="close-btn" @click="closeNav"><FontAwesomeIcon :icon="['fas', 'x']" class="fontIcon" /></button>
+        
+        <NuxtLink to="/" @click="isMobile && closeNav()">Forside</NuxtLink>
+        <NuxtLink to="/menu" @click="isMobile && closeNav()">Menu</NuxtLink>
+        <NuxtLink to="/book" @click="isMobile && closeNav()">Book bord</NuxtLink>
+        <NuxtLink to="/events" @click="isMobile && closeNav()">Events</NuxtLink>
+        <NuxtLink to="/about" @click="isMobile && closeNav()">Om os</NuxtLink>
+        <NuxtLink to="/contact" @click="isMobile && closeNav()">Kontakt</NuxtLink>
+      </nav>
+    </transition>
   </header>
 
-  <transition name="slide">
-    <nav v-show="isOpen" class="nav">
-      <button v-if="isMobile" class="close-btn" @click="closeNav">Luk</button>
-      
-      <NuxtLink to="/" @click="isMobile && closeNav()">Forside</NuxtLink>
-      <NuxtLink to="/menu" @click="isMobile && closeNav()">Menu</NuxtLink>
-      <NuxtLink to="/book" @click="isMobile && closeNav()">Book bord</NuxtLink>
-      <NuxtLink to="/events" @click="isMobile && closeNav()">Events</NuxtLink>
-      <NuxtLink to="/about" @click="isMobile && closeNav()">Om os</NuxtLink>
-      <NuxtLink to="/contact" @click="isMobile && closeNav()">Kontakt</NuxtLink>
-    </nav>
-  </transition>
 </template>
 
 <style scoped>
+.fontIcon{
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+
 .cafeLogo{
-width: 70px;
-height: 50px;
+width: 80px;
+height: 60px;
 }
 
 header {
+  position: sticky;
+  top: 0;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 1rem;
   background-color: var(--navGray);
+  z-index: 99;
 }
 
 button {
   width: 50px;
   height: 50px;
-  border-radius: 50%;
+  border: none;
+  background: none;
+  outline: none;
 }
 
 .nav {
@@ -89,8 +101,8 @@ button {
 
 .close-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 20px;
+  right: 20px;
   width: 40px;
   height: 40px;
   border-radius: 50%;

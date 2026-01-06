@@ -95,24 +95,49 @@ onMounted(() => {
       @click="prevPage"
       :disabled="currentPage === 0"
     >
+    <FontAwesomeIcon :icon="['fas', 'arrow-left']" class="fontIcon" />
       Forrige
     </button>
   
     <button
+    class="next"
       @click="nextPage"
       :disabled="currentPage === totalPages - 1"
     >
-      Næste
+    <FontAwesomeIcon :icon="['fas', 'arrow-right']" class="fontIcon" />
+    Næste
     </button>
   </nav>
 </div>
 </template>
 
 <style scoped>
+.controls button{
+
+  background: none;
+  border: none;
+  
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  
+  .fontIcon{
+    color: #39afa5;
+    width: 30px;
+    height: 30px;
+  }
+
+}
+
+.controls button.next{
+  flex-direction: row-reverse;
+}
+
 /* (Her kan du beholde dit eksisterende CSS uden ændringer) */
 .book-wrapper {
   position: relative;
   width: fit-content;
+  margin-bottom: 30px;
 }
 
 /* Din bog */

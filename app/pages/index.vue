@@ -16,7 +16,6 @@ const kat = [
 
 <template>
     <main>
-      <Slider />
         <p>I dag har vi åbnet 11:00 - 23:30</p>
         <div class="writingHolder">
           <Writing />
@@ -29,31 +28,7 @@ const kat = [
             </div>
         </section>
         <section>
-            <h2>Vi serverer god mad</h2>
-            <div class="bookHolder">
-              <MenuBook :pages="kat"/>
-            </div>
-            <div class="btnHolder">
-              <Button label="Se menuerne" to="/menu" />
-            </div>
-            <h3>Og lækre studie-tilbud!</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur eveniet maxime deleniti nemo error distinctio.</p>
-            <section class="ret">
-                <p class="madBillede">IMG</p>
-                <h3>Cheeseburger</h3>
-                <p>Oksekød m. smeltet ost, salat, tomat, husets sylt og hjemmelavet burgerdressing i briochebolle</p>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-                <p>149,-</p>
-            </section>
-            <section class="ret">
-                <p class="madBillede">IMG</p>
-                <h3>Ulla's favorit salat</h3>
-                <p>Blandet salat m. rørt laks, avacado og grillet citron</p>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-                <p>119,-</p>
-            </section>
+           <Slider />
         </section>
         <section>
             <h3>Book bord</h3>

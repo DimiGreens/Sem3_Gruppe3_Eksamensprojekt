@@ -16,34 +16,26 @@ defineProps({
     <svg
       width="260"
       height="150"
-      viewBox="0 0 260 150"
+      viewBox="-10 -10 140 60"
       xmlns="http://www.w3.org/2000/svg"
       role="button"
       :aria-label="label"
     >
       <!-- Sky-blob -->
-      <path
-        d="M70,80
-          C40,80 35,55 55,45
-          C60,25 95,25 110,40
-          C130,20 170,25 180,45
-          C205,45 215,70 195,85
-          C190,105 150,110 130,100
-          C110,115 75,110 70,90Z"
-        fill="#2ab7b0"
-      />
+      <path d="M82 5.5C107.921 -1.45824 117 16 117 22.527C117 27 111.565 35.6704 102.367 37.9898C93.1694 40.3092 81.8115 37.0234 77.2823 35.0905C73.7983 33.1577 63.6947 30.4517 51.1523 35.0905C38.6098 39.7294 27.8094 40.2448 23.977 39.9227C13.1766 38.312 -6.33386 30.8383 2.02776 13.8292C10.3894 -3.1798 24.3254 -0.989237 30.2482 2.23217C38.095 6.5 56.079 12.4582 82 5.5Z" fill="#39AFA5"/>
 
       <!-- Tekst -->
       <text
-        x="50%"
-        y="45%"
-        text-anchor="middle"
-        dominant-baseline="middle"
-        fill="#ffffff"
-        font-size="1rem"
-      >
-        {{ label }}
-      </text>
+  x="44%"
+  y="41%"
+  dy="-0.15em"
+  text-anchor="middle"
+  dominant-baseline="middle"
+  fill="#ffffff"
+  font-size="0.8rem"
+>
+  {{ label }}
+</text>
     </svg>
   </NuxtLink>
 </template>

@@ -13,7 +13,7 @@
             <p>BILLEDE</p>
             <h3>Caféens galleri</h3>
             <p>BILLEDE</p>
-            <h3>Video galleir</h3>
+            <h3>Video galleri</h3>
             <p>BILLEDE</p>
         </section>
         <section>
@@ -27,6 +27,7 @@
             <a href="#">Kontakt</a>
         </section>
         
+
     </main>
 </template>
 

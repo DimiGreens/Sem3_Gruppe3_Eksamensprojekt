@@ -7,8 +7,8 @@
     <section class="footerLinks">
         <p>LOGO</p>
         <div class="SoMe">
-            <p>FB</p>
-            <p>IG</p>
+            <FontAwesomeIcon class="icon" :icon="['fab', 'facebook']" />
+            <FontAwesomeIcon class="icon" :icon="['fab', 'instagram']" />
         </div>
     </section>
     <section class="info">
@@ -30,6 +30,10 @@
 </template>
 
 <style scoped>
+
+.icon{
+    background-color: pink;
+}
 
 footer{
     background-color: var(--navGray);

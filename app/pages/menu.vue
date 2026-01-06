@@ -61,11 +61,13 @@ const dog = [
 
 <template>
   <main>
-    <h1>Menu</h1>
+    <h1>Vi serverer god mad</h1>
+    <p>Nedenfor kan du se vores menukort, vi har mange muligheder, og du kan vælge lige det du gerne vil have at spise og/eller drikke.</p>
+    <p>Kig lidt længere ned og så finder du vores speciel menukort, hvor du kan købe bord til en festlig menu, til en juleforkost, nytårsmenu eller fest menu!</p>
     <div class="menues">
-      <h2>Forret</h2>
       <MenuBook :pages="kat" />
       <MenuBook :pages="dog" :colors="['#f6dfa2', '#f4d78b']" />
+      <h2>Særlige anledninger</h2>
       <MenuBook :pages="dog" :colors="['#c4e3b5', '#b4d6a4']" />
       <MenuBook :pages="dog" :colors="['#acd0ec', '#97c4e7']" />
       <MenuBook :pages="dog" :colors="['#c7b1e7', '#b99de1']" />

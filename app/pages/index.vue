@@ -1,8 +1,6 @@
 <script setup>
 import MenuBook from '~/components/MenuBook.vue';
-import { Splide, SplideSlide } from '@splidejs/vue-splide';
-import '@splidejs/splide/dist/css/splide.min.css';
-
+import Writing from '~/components/Writing.vue';
 const kat = [
   {
     title: 'Morgenmad',
@@ -14,31 +12,29 @@ const kat = [
     ],
   }]
 
-const slides = [
-  'https://unsplash.it/300?1',
-  'https://unsplash.it/300?2',
-  'https://unsplash.it/300?3',
-];
 </script>
 
 <template>
     <main>
         <p>I dag har vi åbnet 11:00 - 23:30</p>
-         <!-- Splide Slider -->
-    <Splide :options="{ type: 'loop', autoplay: true, interval: 6000 }">
-      <SplideSlide v-for="(img, index) in slides" :key="index">
-        <img :src="img" :alt="'Slide ' + (index + 1)" />
-      </SplideSlide>
-    </Splide>
+        <div class="writingHolder">
+          <Writing />
+        </div>
         <h1>Velkommen!</h1>
         <section>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae perspiciatis deleniti, eligendi hic repellat excepturi sequi dolore voluptates id sapiente illo rem ab recusandae eaque corrupti asperiores nemo quas numquam necessitatibus tempore soluta debitis labore nihil. Aliquam dolorum nihil facilis dignissimos eius accusamus veniam. Nostrum asperiores dolorem modi tempore voluptatem?</p>
-            <Button label="Om os" to="/about" />
+            <div class="btnHolder">
+              <Button label="Om os" to="/about" />
+            </div>
         </section>
         <section>
             <h2>Vi serverer god mad</h2>
-            <MenuBook :pages="kat"/>
-            <Button label="Se menuerne" to="/menu" />
+            <div class="bookHolder">
+              <MenuBook :pages="kat"/>
+            </div>
+            <div class="btnHolder">
+              <Button label="Se menuerne" to="/menu" />
+            </div>
             <h3>Og lækre studie-tilbud!</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur eveniet maxime deleniti nemo error distinctio.</p>
             <section class="ret">
@@ -61,7 +57,9 @@ const slides = [
         <section>
             <h3>Book bord</h3>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, in assumenda eaque alias at soluta magni, repudiandae, ut aspernatur quo sequi consequatur! Cum, minus autem!</p>
-            <Button label="Se bordplan" to="/book" />
+            <div class="btnHolder">
+              <Button label="Se bordplan" to="/book" />
+            </div>
         </section>
         <section>
             <h3>Ulla's playliste</h3>
@@ -71,6 +69,21 @@ const slides = [
 </template>
 
 <style scoped>
+.writingHolder{
+  display: flex;
+  justify-content: center;
+}
+
+.bookHolder{
+  display: flex;
+  justify-content: center;
+}
+
+.btnHolder{
+  display: flex;
+  justify-content: center;
+}
+
     .splide__slide img {
   width: 100%;
   border-radius: 10px;

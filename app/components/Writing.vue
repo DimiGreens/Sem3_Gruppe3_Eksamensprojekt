@@ -1,58 +1,47 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-
-const svgRef = ref<SVGSVGElement | null>(null)
-
+const svgRef = ref(null)
 onMounted(() => {
-  if (!svgRef.value) return
-
-  const paths = svgRef.value.querySelectorAll<SVGPathElement>('path')
-  let totalDelay = 0
-
-  paths.forEach((path) => {
+  console.log('Component mounted')
+  console.log('SVG ref:', svgRef.value)
+  if (!svgRef.value) {
+    console.log('No SVG found!')
+    return
+  }
+  const paths = svgRef.value.querySelectorAll('path')
+  console.log('Found paths:', paths.length)
+  paths.forEach((path, index) => {
     const length = path.getTotalLength()
-    path.style.strokeDasharray = `${length}`
-    path.style.strokeDashoffset = `${length}`
-    path.style.animation = `draw 2s ease forwards ${totalDelay}s`
-    totalDelay += 0.05 // adjust delay between paths
+    console.log(`Path ${index} length:`, length)
+    // Set initial state - path is hidden
+    path.style.strokeDasharray = length
+    path.style.strokeDashoffset = length
+    console.log('Initial dashoffset set to:', -length)
+    // Animate after a short delay
+    setTimeout(() => {
+      console.log('Starting animation for path', index)
+      path.style.transition = 'stroke-dashoffset 2s ease-in-out'
+      path.style.strokeDashoffset = '0'
+    }, 500 + (index * 100))
   })
 })
 </script>
-
 <template>
-  <div class="svg-wrapper">
-    <svg
+<div class="svg-wrapper">
+<svg
       ref="svgRef"
       width="266"
       height="23"
-      viewBox="0 0 266 23"
+      viewBox="0 0 280 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      class="animated-svg"
-    >
-      <!-- Example path -->
-      <path
-        d="M258.142 17.592C257.918 17.656 257.79 17.688 257.758 17.688C257.63 17.688 257.494 17.624 257.35 17.496C256.822 16.712 256.438 15.344 256.198 13.392C255.974 11.44 255.862 9.76 255.862 8.352C255.862 8.128 256.022 8.016 256.342 8.016C256.822 8.016 257.062 8.28 257.062 8.808C257.062 8.952 257.054 9.072 257.038 9.168C257.182 8.832 257.454 8.488 257.854 8.136C258.254 7.784 258.718 7.488 259.246 7.248C259.774 7.008 260.31 6.888 260.854 6.888C262.566 6.888 263.814 7.648 264.598 9.168C265.382 10.672 265.774 12.544 265.774 14.784C265.774 15.552 265.694 16.168 265.534 16.632C265.374 17.08 265.158 17.304 264.886 17.304C264.598 17.304 264.454 17.216 264.454 17.04C264.566 16.192 264.622 15.36 264.622 14.544C264.622 12.48 264.262 10.92 263.542 9.864C262.822 8.792 261.87 8.256 260.686 8.256C260.11 8.256 259.55 8.4 259.006 8.688C258.478 8.976 258.046 9.376 257.71 9.888C257.39 10.4 257.23 10.984 257.23 11.64C257.23 12.376 257.27 13.016 257.35 13.56C257.43 14.104 257.558 14.76 257.734 15.528C257.926 16.28 258.062 16.968 258.142 17.592Z"
-        stroke="black"
-        fill="none"
-        stroke-width="1"
-      />
-    </svg>
-  </div>
+>
+<path d="M258.1 17.6h-.3l-.4-.1a10 10 0 0 1-1.2-4.1l-.3-5q0-.4.4-.4.8 0 .8.8v.4q.1-.6.8-1l1.3-1q.9-.3 1.7-.3a4 4 0 0 1 3.7 2.3 12 12 0 0 1 1 7.4q-.3.7-.7.7t-.4-.3l.1-2.5q0-3-1-4.6-1.1-1.6-3-1.6a4 4 0 0 0-2.9 1.6q-.5.7-.5 1.7a13 13 0 0 0 .5 4z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M248.4 17.5q-1.4 0-2.6-.6a5 5 0 0 1-2.4-4.4q0-2.4 1.7-3.6a8 8 0 0 1 4.4-1.1q1.2 0 2.2.5t1.6 1.7.7 2.5-.8 2.7q-.9 1-2.1 1.7-1.4.6-2.7.6m-.3-1.3q2.2 0 3.4-1 1-1 1.1-3a3.2 3.2 0 0 0-3.4-3.2q-1-.1-2.2.4-1 .3-1.8 1.2-.7.8-.7 2 0 .9.5 1.8t1.3 1.3q.7.5 1.8.5z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M234 17.5q-1 0-2-.8a5 5 0 0 1-1.2-2 8 8 0 0 1-.4-2.5q0-2.4 1-4 .9-1.5 3-1.5 1 0 2 .4l2.4 1.4.6.5-.7-3.3-.7-4.4q0-1.3.7-1.3.3.6.6 2.5l2 10.7q.3 2.2.7 2.8 0 .5-.9.5-.6 0-.8-.7l-.3-2.5h-.2a9 9 0 0 1-2.6 3q-1.5 1.2-3.2 1.2m.3-1.2q1 0 2.1-.8a8 8 0 0 0 2-2 4 4 0 0 0 .8-2.2v-.7Q236.7 8 234.6 8q-1.5 0-2.2 1-.8 1.1-.8 2.9v.5q.1 1.8.8 2.8t2 1.1z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M220.4 17.6h-.4l-.4-.1a10 10 0 0 1-1.2-4.1l-.3-5q0-.4.5-.4t.7.8v.4q.2-.6.8-1 .6-.6 1.4-1 .7-.3 1.6-.3a4 4 0 0 1 3.7 2.3 12 12 0 0 1 1 7.4q-.3.7-.7.7t-.4-.3l.1-2.5q0-3-1-4.6-1.2-1.6-2.9-1.6a4 4 0 0 0-3 1.6q-.5.7-.5 1.7a13 13 0 0 0 .6 4z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M210.6 17.5q-1.5 0-2.6-.6a5 5 0 0 1-2.4-4.4q0-2.4 1.8-3.6a8 8 0 0 1 4.3-1.1q1.2 0 2.2.5t1.6 1.7.7 2.5-.8 2.7q-.7 1-2.1 1.7t-2.7.6m-.3-1.3q2.2 0 3.4-1t1.2-3a3.2 3.2 0 0 0-3.5-3.2q-1-.1-2.1.4-1.2.3-1.9 1.2t-.7 2q0 .9.5 1.8t1.3 1.3 1.8.5z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M202.1 17.5q-2.3 0-3.6-.8-1.2-.7-1.2-3 .5-12 1.5-11.4.6 0 .6 1.6l-.4 4.1q-.4 3.8-.4 5.4v.7q0 .5.3 1 .4.6.9.6l4.7.4q.2 0 .2.5t-.2.6l-.7.3z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M187.3 22q-.3 0-.4-.2v-.6q0-.8.3-2.2l.2-1 .2-1.4v-.9h-.4l-.1-.4q0-.6.2-.9 0-.3.6-.3t.8.5.2 1.4v.8l-.2 1.8-.7 2.4q-.3 1-.8 1z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M177 17.6h-.3l-.4-.1a10 10 0 0 1-1.2-4.1l-.3-5q0-.4.4-.4.8 0 .8.8v.4q.1-.6.8-1 .6-.6 1.4-1 .7-.3 1.6-.3a4 4 0 0 1 3.7 2.3 12 12 0 0 1 1 7.4q-.3.7-.7.7t-.4-.3l.1-2.5q0-3-1-4.6-1.1-1.6-3-1.6a4 4 0 0 0-2.9 1.6q-.5.7-.5 1.7a13 13 0 0 0 .5 4q.4 1 .4 2z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M169.7 17.5q-1.5 0-2.9-.6a5 5 0 0 1-2-1.7q-.8-1-.8-2.6 0-1.5.6-3 .6-1.3 1.8-2.2 1.1-.9 2.7-.9t2.5 1 .8 2.7-1.2 2.2a5 5 0 0 1-2.8.7h-.8l-1.2-.3q-.4-.1-.4-.7l.1-.2.4-.1 1.1.1 1.4.2q2.1 0 2.2-2 0-1-.4-1.8-.5-.6-1.5-.6-1.2 0-2 .6-1 .7-1.5 1.6t-.5 2q0 2 1 3.2 1.2 1.2 3.3 1.2h1l.6-.2 2-.5.6.1q-.6 1-1.8 1.4z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M152 14.7q.2-.3.6-.3t.5.2q.3 0 .6.4l.5.4q.5.4 1.5.6 1 .3 2 .3a5 5 0 0 0 2.2-.5q1-.4 1-1.3 0-.7-.6-1-.5-.6-1.2-.7l-2-.4-2.6-.4q-1-.3-1.6-1t-.5-1.9 1.2-1.9a6 6 0 0 1 2.8-.6q1.5 0 2.4.6 1 .6 1 1.7.1.7-.1 1t-.6.4l-.3-.1-.1-.4.2-.8q0-.6-.8-1l-1.5-.2a4 4 0 0 0-2.2.5q-.8.5-.8 1.2t.6 1 1.4.6l2.4.3 2 .4q.9.3 1.4 1 .6.6.6 1.9 0 1.4-1.2 2-1.3.9-3 .8-2.1 0-3.9-.7t-2-2.1z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M149.1 17.3a53 53 0 0 1-1-13.1v-3q0-.3.6-.3.3 0 .4.2l.2.6a130 130 0 0 0 .7 15.3q0 .4-.4.4z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M142.7 17.5q-1.5 0-2.9-.6a5 5 0 0 1-2-1.7q-.8-1-.8-2.6 0-1.5.6-3 .6-1.3 1.8-2.2 1.1-.9 2.7-.9t2.5 1 .8 2.7-1.2 2.2a5 5 0 0 1-2.8.7h-.8l-1.2-.3q-.4-.1-.4-.7l.1-.2.4-.1 1.1.1 1.4.2q2.1 0 2.2-2 0-1-.4-1.8-.5-.6-1.5-.6-1.2 0-2 .6-1 .7-1.5 1.6t-.5 2q0 2 1 3.2 1.2 1.2 3.3 1.2h1l.6-.2 2-.5.6.1q-.6 1-1.8 1.4z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M128.3 17.5q-.6 0-.6-.7v-.6q.3-.4.2-1v-2.9l-.6-4.1-.8-5q0-.4.4-.4.3 0 1 2.1.5 2.1 1.1 7.1a13 13 0 0 1 3.1-4.5q1-.8 1.7-.8.3 0 .3.2v.4l-2.8 3q-1.5 1.6-1.4 2.5 0 .6 1 1.3a10 10 0 0 0 4.7 1.8q.4 0 .4.6 0 .8-1.5.8a5 5 0 0 1-2.7-1q-1.5-1-2.5-2l-.1 1.2q0 1-.3 1.5 0 .5-.6.5z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M121.2 17.5q-1-2-1.6-4.5a22 22 0 0 1-.5-4.5q0-.7.3-1h.3l.2.2.2 1 .1.8a4 4 0 0 1 1-2q.8-.8 2-.8 1 0 1.7.5t.6 1.5q-1.2-.6-2.1-.6t-1.7.5q-.6.6-.9 1.5a4 4 0 0 0 0 2.5q.1.6.5 1.4l.6 1.4.2 1.3q0 .4-.3.6z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M114 17.5q-1.5 0-2.9-.6a5 5 0 0 1-2-1.7q-.8-1-.8-2.6 0-1.5.6-3 .6-1.3 1.8-2.2 1-.9 2.7-.9 1.5 0 2.5 1 .8 1.1.8 2.7 0 1.5-1.2 2.2a5 5 0 0 1-2.8.7h-.8l-1.2-.3q-.4-.1-.4-.7l.1-.2.4-.1 1.1.1 1.4.2q2.2 0 2.2-2 0-1-.5-1.8-.3-.6-1.4-.6-1.2 0-2 .6-1 .7-1.5 1.6t-.5 2q0 2 1 3.2 1.2 1.2 3.3 1.2h1l.6-.2 2-.5.6.1q-.6 1-1.8 1.4z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M102 17.5q-.7 0-1-.7l-.4-1.8v-.6a53 53 0 0 1-1-8.5l-.2-1.8h-4.1l-.5-.1-.5-.3-.1-.9h1.6q4.2 0 7.6.3 3.3.4 3.3 1.3v.4h-.4l-4-.5-1.5-.2a84 84 0 0 0 1.3 11.7l.4 1.2-.1.4z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M81.7 17.5q-2.4 0-4.3-.9t-1.8-3q0-.9.5-1.6t1.4-1.2a5 5 0 0 1 2.3-.5l1.7.1q.7.1 1.7.5l2 1.4q-.5-1.5-1.2-2.9-.8-1.2-1.8-2-.9-.6-1.8-.6l-.8.2q-.4 0-1 .4l-.8.4-.2-.1-.1-.2q0-1 .8-1.5t2.1-.5q1.7 0 3.1 1.5 1.5 1.3 2.2 3.2a10 10 0 0 1 .8 4.8h-.8a6 6 0 0 0-5.2-3.4q-1.9 0-2.7.5t-.8 1.6 1.1 1.8q1.2.6 2.9.7l1.5-.1 2.1-.6h1.8q.3 0 .2.5l-1 .6a19 19 0 0 1-3.9.9z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M72.9 17.3a53 53 0 0 1-1.1-13.1v-3q0-.3.5-.3t.5.2l.1.6a130 130 0 0 0 .8 15.3q0 .4-.4.4z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M68.8 17.3a53 53 0 0 1-1-13.1v-3q0-.3.5-.3t.5.2l.1.6a130 130 0 0 0 .7 15.3q.1.4-.4.4z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M58.3 17.5q-3 0-4-2.5a18 18 0 0 1-1.1-9.8q.3-.8 1.3-.8.3 0 .4.2l.1.3q0 .4-.5 1-.3 0-.4.3L54 7.5v1.2q0 3.6 1.3 5.7 1.2 2 3.3 2a4 4 0 0 0 3.6-2.1q.6-1 .6-2.1a55 55 0 0 0-1.1-6.6q0-.5.2-.7.2-.3.7-.2.2 0 .4.3l.2 1.2.3 3 .5 2.3 1.5 4.2.1.6q0 .5-.6.5-.2 0-1.4-3-.3 1.2-1 2-1 .8-2 1.3-1.2.4-2.3.4z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M41.3 17.5q-1.5 0-2.9-.6a5 5 0 0 1-2-1.7q-.8-1-.8-2.6 0-1.5.6-3 .6-1.3 1.7-2.2t2.8-.9 2.5 1 .7 2.7q0 1.5-1 2.2a5 5 0 0 1-3 .7h-.7l-1.2-.3q-.4-.1-.4-.7l.1-.2.4-.1 1.1.1 1.4.2q2.1 0 2.2-2 0-1-.5-1.8-.3-.6-1.4-.6-1.2 0-2 .6-1 .7-1.5 1.6t-.5 2q0 2 1 3.2 1.2 1.2 3.3 1.2h1l.6-.2 2-.5.6.1q-.6 1-1.8 1.4z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M39.3 5l-.5-.1-.1-.5q0-.5.8-1.1l2-1.6.5-.4q.4.2.4.5t-.4.6l-1 1.1z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M31.8.6q1 0 2 .6t1.6 1.3q.7.8.7 1.7h-.6L35 4l-.7-.7q-.6-.7-1.1-1t-1.3-.4q-1.3 0-2.2 1.3-1 1.2-1 2.8a15 15 0 0 0 0 3.7l3.4.3 1.4.2.1.3q0 .6-1.5.7-1.2 0-3.2-.5l.7 2 1.7 3.5.3.8-.2.4-.5.1q-.6 0-1.2-1.3l-1.3-3.9L28 11l-1.3.3-1.3.2q-.3 0-.4-.4 0-.6.7-.8l1.1-.3h.7V8.2q0-3 1-5.3A4 4 0 0 1 31.7.6z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M19.1 17.5q-2.5 0-4.3-.9-2-.9-1.9-3 0-.9.5-1.6t1.4-1.2a5 5 0 0 1 2.3-.5l1.8.1 1.6.5 2 1.4q-.4-1.5-1.2-2.9-.7-1.2-1.7-2-1-.6-1.9-.6L17 7l-.9.4-.9.4-.2-.1v-.2q0-1 .8-1.5 1-.5 2-.5 1.8 0 3.2 1.5 1.4 1.3 2.1 3.2a10 10 0 0 1 .8 4.8H23a6 6 0 0 0-5.2-3.4q-1.7 0-2.6.5-.8.6-.8 1.6t1.1 1.8q1.1.6 2.8.7L20 16l2-.6h1.9q.2 0 .2.5l-1 .6a19 19 0 0 1-3.9.9z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>      <path d="M5.2 17.8q-1.5 0-2.8-1a6 6 0 0 1-1.8-2.4 10 10 0 0 1 .5-8 9 9 0 0 1 2.7-3.2A6 6 0 0 1 7.4 2q1.5 0 2.4.7t.8 1.6q0 .6-.3 1l-1 .7V5l.1-.6V4q-.4-.8-1.9-.8h-1q-1.2.3-2.4 1.3a8 8 0 0 0-2.9 6q0 1.5.5 2.9t1.4 2.1 2.3.8q1.6.1 2.8-.4l2.2-1.2.2-.1q.3 0 .4.3 0 .6-.8 1.3-.9.6-2.3 1.1t-2.7.5z"        stroke="black"        stroke-width="2"        fill="none"        stroke-linecap="round"        stroke-linejoin="round"/>
+</svg>
+</div>
 </template>
-
 <style scoped>
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-.animated-svg path {
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  /* Important: make the stroke visible */
-  stroke: black;
-  fill: none;
+.svg-wrapper {
+  padding: 20px;
 }
 </style>

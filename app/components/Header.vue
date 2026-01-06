@@ -28,7 +28,7 @@ const closeNav = () => {
 </script>
 
 <template>
-  <header>
+  <header id="top">
     <img src="../assets/img/ullaTLogo.jpg" alt="Cafe logo" class="cafeLogo">
     <button v-if="isMobile" @click="toggleNav"><FontAwesomeIcon :icon="['fas', 'bars']" class="fontIcon" /></button>
     <transition name="slide">
@@ -41,6 +41,18 @@ const closeNav = () => {
         <NuxtLink to="/events" @click="isMobile && closeNav()">Events</NuxtLink>
         <NuxtLink to="/about" @click="isMobile && closeNav()">Om os</NuxtLink>
         <NuxtLink to="/contact" @click="isMobile && closeNav()">Kontakt</NuxtLink>
+        
+        <section class="openHours">
+          <h3>Åbningstider</h3>
+          <p>Mandag: lukket</p>
+          <p>Tirsdag: 11:00 - 23:30</p>
+          <p>Onsdag: 11:00 - 23:30</p>
+          <p>Torsdag: 11:00 - 23:30</p>
+          <p>Fredag: 13:00 - 02:00</p>
+          <p>Lørdag: 10:00 - 02:00</p>
+          <p>Søndag: lukket</p>
+        </section>
+
       </nav>
     </transition>
   </header>
@@ -48,6 +60,18 @@ const closeNav = () => {
 </template>
 
 <style scoped>
+.openHours{
+  color: #fb9fc4;
+}
+
+.openHours p{
+  margin: 0;
+}
+
+.openHours h3{
+  margin-bottom: 0;
+}
+
 .fontIcon{
   height: 100%;
   width: 100%;
@@ -80,7 +104,7 @@ button {
 
 .nav {
   display: flex;
-  align-items: center;
+  align-items: left;
   justify-content: center;
   flex-direction: column;
   position: absolute;
@@ -90,13 +114,16 @@ button {
   width: 60vw;
   height: 100vh;
   z-index: 99;
+  padding-left: 3rem;
 }
 
 .nav a {
   color: white;
   text-decoration: none;
-  padding: 1rem;
-  margin: 0.5rem;
+  padding: 1rem 0;
+  font-family: "Indie Flower", cursive;
+  font-size: 1.2rem;
+  /* margin: 0.5rem; */
 }
 
 .close-btn {

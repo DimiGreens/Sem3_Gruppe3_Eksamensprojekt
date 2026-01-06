@@ -20,12 +20,17 @@ const kat = [
         <div class="writingHolder">
           <Writing />
         </div>
-        <h1>Velkommen!</h1>
+        <h1 id="Welcome">Velkommen!</h1>
         <section>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae perspiciatis deleniti, eligendi hic repellat excepturi sequi dolore voluptates id sapiente illo rem ab recusandae eaque corrupti asperiores nemo quas numquam necessitatibus tempore soluta debitis labore nihil. Aliquam dolorum nihil facilis dignissimos eius accusamus veniam. Nostrum asperiores dolorem modi tempore voluptatem?</p>
             <div class="btnHolder">
               <Button label="Om os" to="/about" />
             </div>
+        </section>
+        <section>
+          <div class="bookHolder">
+            <MenuBook :pages="kat" />
+          </div>
         </section>
         <section>
            <Slider />
@@ -41,10 +46,33 @@ const kat = [
             <h3>Ulla's playliste</h3>
             <h3>PLAYLISTE</h3>
         </section>
+        <div class="btnHolder">
+          <a href="#Welcome">
+            <button class="upBtn"><FontAwesomeIcon :icon="['fas', 'arrow-up']" class="fontIcon" /></button>
+          </a>
+        </div>
     </main>
 </template>
 
 <style scoped>
+
+.fontIcon{
+  width: 40px;
+  height: 40px;
+  color: #fb9fc4;
+}
+
+.upBtn{
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: none;
+  background-color: #1d1d1b;
+}
+
 .writingHolder{
   display: flex;
   justify-content: center;

@@ -66,10 +66,12 @@ const closeNav = () => {
 
 .openHours p{
   margin: 0;
+  font-family: "Indie Flower", cursive;
 }
 
 .openHours h3{
   margin-bottom: 0;
+  font-family: "Poppins", sans-serif;
 }
 
 .fontIcon{

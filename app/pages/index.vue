@@ -26,29 +26,43 @@ const kat = [
       </div>
         <h2>Kom indenfor!</h2>
         <section>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae perspiciatis deleniti, eligendi hic repellat excepturi sequi dolore voluptates id sapiente illo rem ab recusandae eaque corrupti asperiores nemo quas numquam necessitatibus tempore soluta debitis labore nihil. Aliquam dolorum nihil facilis dignissimos eius accusamus veniam. Nostrum asperiores dolorem modi tempore voluptatem?</p>
+            <p>Vi har åbnet dørene for dig! Vi byder dig velkommen til en farverig café hvor tåbelige indfald, vanvittige idéer og store drømme står øverst på dagsordenen. Med et stort udvalg af lækker mad og fede events holder vi en fest hver dag. Det søde personale er klar til at give dig service i verdensklasse, men du behøver ikke snakke med dem før du har fået din morgen kaffe ;) </p>
             <div class="btnHolder">
-              <Button label="Om os" to="/about" />
+              <Button label="Mere om Caféen" to="/about" />
             </div>
         </section>
         <section>
+          <h3>Vi serverer god! Også ud af huset</h3>
           <div class="bookHolder">
             <MenuBook :pages="kat" />
           </div>
         </section>
         <section>
-           <Slider />
+            <h3>Kan du høre det?</h3>
+            <p>Hos Café Ulla Terkelsen, London spiller vi lette og lækre toner. Start playlisten og oplev derhjemme hvordan tonerne skaber god stemning.</p>
+            <h3>PLAYLISTE</h3>
         </section>
         <section>
-            <h3>Book bord</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, in assumenda eaque alias at soluta magni, repudiandae, ut aspernatur quo sequi consequatur! Cum, minus autem!</p>
+          <h3>Ullas events</h3>
+          <p>Udover lækre toner åbner vi døren for en masse lækre events. Er du til en aften i musik bingoen eller live musikkens navn eller kan en af vores andre events friste?</p>
+           <Slider />
+           <div class="btnHolder">
+             <Button label="Alle Events" to="/events" />
+            </div>
+        </section>
+        <section>
+            <h3>Kan du heller ikke undvære os?</h3>
+            <p>Vi kan heller ikke undvære dig! Vi glæder os til at du besøger os i caféen og ser frem til at byde dig velkommen i vores afslappede rammer, hvor du kan få et break fra hverdagen.</p>
             <div class="btnHolder">
               <Button label="Se bordplan" to="/book" />
             </div>
         </section>
         <section>
-            <h3>Ulla's playliste</h3>
-            <h3>PLAYLISTE</h3>
+          <h3>Vil vil så gerne servicere dig!</h3>
+          <p>Fandt du ikke hvad du søgte eller har du spørgsmål til os, så kontakt os ved at klikke på knappen herunder.</p>
+          <div class="btnHolder">
+            <Button label="Kontakt" to="/contact" />
+          </div>
         </section>
         <div class="btnHolder">
           <a href="#Welcome">

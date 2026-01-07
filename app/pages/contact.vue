@@ -6,39 +6,55 @@
 <main>
     <section>
         <h1>Kontakt os her</h1>
-        <p>Har du klager, forslag, eller en speciel anmodning til os, så kan du kontakte os her, ved at ringe eller skrive en mail til os.</p>
+        <p>Hvad kan vi hjælpe dig med i dag? Giv et kald eller send os en mail herunder.</p>
     </section>
     <section>
-        <h3>Kontaktinfo</h3>
-        <p>Mail: CAFEULLATERKELSENLONDON@Gmail.com</p>
-        <p>Tlf: 98 15 80 00</p>
-        <p>Bedst at tage kontakt mellem 10:00 - 12:00</p>
-    </section>
-    <section>
-        <h3>Adresse</h3>
-        <p>Kastevej 36</p>
-        <p>9000 Aalborg</p>
+        <p><FontAwesomeIcon :icon="['fas', 'phone']" class="fontIcon" /> +45 98 15 80 00</p>
     </section>
     <section>
         <h3>Send en mail</h3>
         <form action="#">
+            <p>Email</p>
             <input type="text">
+            <p>Emne</p>
             <input type="text">
+            <p>Din besked</p>
             <input type="text">
-            <button>Send</button>
         </form>
+        <div class="btnHolder">
+            <Button label="Send" to="#"/>
+        </div>
     </section>
 </main>
 </template>
 
 <style scoped>
+.fontIcon{
+    width: 30px;
+    height: 30px;
+}
+
+section:nth-of-type(2) p{
+    display: flex;
+    align-items: center;
+}
+
+.btnHolder{
+    display: flex;
+    justify-content: center;
+}
+
 form{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
+    padding-right: 10px;
+
+    p{
+        margin: 0.2rem 0;
+    }
 
     input{
-        margin: 0.5rem 0;
         width: 100%;
     }
 

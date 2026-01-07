@@ -79,15 +79,27 @@ const dog = [
     </transition>
     <div v-show="!isLoading">
       <h1>Vi serverer god mad</h1>
-      <p>Nedenfor kan du se vores menukort, vi har mange muligheder, og du kan vælge lige det du gerne vil have at spise og/eller drikke.</p>
-      <p>Kig lidt længere ned og så finder du vores speciel menukort, hvor du kan købe bord til en festlig menu, til en juleforkost, nytårsmenu eller fest menu!</p>
+      <p>Her på siden finder du alle vores menuer fra det i caféen til særlige anledninger. Ulla’s menuer opdateres løbende for at du får lige det du ønsker dig!</p>
       <div class="menues">
         <MenuBook :pages="kat" />
         <MenuBook :pages="dog" :colors="['#f6dfa2', '#f4d78b']" />
-        <h2>Særlige anledninger</h2>
+        <h3>Har vi vækket apetitten?</h3>
+        <div class="btnHolder">
+          <Button label="Book bord" to="/book" />
+        </div>
+        <h3>Til de særlige anledninger</h3>
         <MenuBook :pages="dog" :colors="['#c4e3b5', '#b4d6a4']" />
+        <div class="btnHolder">
+          <Button label="Send forespørgsel" to="/contact"/>
+        </div>
         <MenuBook :pages="dog" :colors="['#acd0ec', '#97c4e7']" />
+        <div class="btnHolder">
+          <Button label="Book bord" to="/book" />
+        </div>
         <MenuBook :pages="dog" :colors="['#c7b1e7', '#b99de1']" />
+        <div class="btnHolder">
+          <Button label="Book bord" to="/book" />
+        </div>
       </div>
     </div>
   </main>

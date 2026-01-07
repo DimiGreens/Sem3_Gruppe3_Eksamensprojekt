@@ -16,11 +16,15 @@ const kat = [
 
 <template>
     <main>
-        <p>I dag har vi åbnet 11:00 - 23:30</p>
-        <div class="writingHolder">
-          <Writing />
-        </div>
-        <h1 id="Welcome">Velkommen!</h1>
+      <div id="Welcome" class="writingHolder">
+        <img class="light1" src="../assets/img/lys.png">
+        <img class="light2" src="../assets/img/lys2.png">
+        <img class="light2" src="../assets/img/lys3.png">
+        <h1 class="welcomeText">Welcome hos</h1>
+        <Writing class="writing"/>
+        <p class="opening">Åben i dag: 11:00 - 23:30</p>
+      </div>
+        <h2>Kom indenfor!</h2>
         <section>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae perspiciatis deleniti, eligendi hic repellat excepturi sequi dolore voluptates id sapiente illo rem ab recusandae eaque corrupti asperiores nemo quas numquam necessitatibus tempore soluta debitis labore nihil. Aliquam dolorum nihil facilis dignissimos eius accusamus veniam. Nostrum asperiores dolorem modi tempore voluptatem?</p>
             <div class="btnHolder">
@@ -74,8 +78,41 @@ const kat = [
 }
 
 .writingHolder{
-  display: flex;
-  justify-content: center;
+  position: relative;
+  height: 200px;
+  margin-bottom: 80px;
+}
+
+.writingHolder img{
+  left: 0;
+  width: 100%;
+}
+
+.writing {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.opening {
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: "Indie Flower", cursive;
+  font-size: 1.2rem;
+}
+
+.welcomeText{
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: "Indie Flower", cursive;
+  font-size: 1.2rem;
 }
 
 .bookHolder{

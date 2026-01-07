@@ -1,5 +1,7 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+
+const colorWheel = ['#f4c4a4', '#f6dfa2', '#c4e3b5', '#acd0ec', '#c7b1e7']
 
 const images = ref([
   { title: "test1", date: "1-1-1111", url: 'https://unsplash.it/300?1' },
@@ -43,25 +45,68 @@ function prevImage() {
       v-for="(img, i) in images"
       :key="i"
       class="polaroid"
-      :style="randomRotation(i)"
+      :style="[randomRotation(i), {backgroundColor: colorWheel[i % colorWheel.length]} ]"
     >
       <img :src="img.url" alt="" />
-      <p>{{ img.title }}</p>
+      <p class="polaroidText">{{ img.title }}</p>
     </div>
   </div>
 
   <div v-if="modalOpen" class="modal-overlay" @click.self="closeModal">
     <div class="modal-content">
-      <button class="prev" @click.stop="prevImage">Forrige</button>
-      <img :src="images[currentIndex].url" alt="" />
-      <div class="caption">{{ images[currentIndex].title }} — {{ images[currentIndex].date }}</div>
-      <button class="next" @click.stop="nextImage">Næste</button>
-      <button class="close" @click="closeModal">&times;</button>
+      <button class="prev" @click.stop="prevImage"><FontAwesomeIcon :icon="['fas', 'arrow-left']" class="leftIcon" />Forrige</button>
+      <div class="photoFrame" :style="{ backgroundColor: colorWheel[currentIndex % colorWheel.length] }">
+        <img :src="images[currentIndex].url" alt="" />
+        <p class="photoTitle">{{ images[currentIndex].title }}</p>
+        <p class="photoDate">{{ images[currentIndex].date }}</p>
+      </div>
+      <button class="next" @click.stop="nextImage">
+        Næste
+        <FontAwesomeIcon :icon="['fas', 'arrow-right']" class="rightIcon" />
+      </button>
+      <button class="close" @click="closeModal"><FontAwesomeIcon :icon="['fas', 'x']" class="fontIcon" /></button>
     </div>
   </div>
 </template>
 
 <style scoped>
+.leftIcon, .rightIcon{
+  color: #39afa5;
+    width: 30px;
+    height: 30px;
+}
+
+
+
+.fontIcon{
+  height: 50px;
+  width: 50px;
+}
+
+.photoFrame{
+  width: 320px;
+  height: 400px;
+  position: relative;
+
+  img{
+    margin-top: 10px;
+  }
+
+  .photoDate{
+    position: absolute;
+    bottom: 0;
+    right: 25px;
+    font-size: 0.7rem;
+  }
+
+}
+
+.photoTitle{
+  font-family: "Indie Flower", cursive;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
 .pile {
   position: relative;
   width: 200px; 
@@ -81,6 +126,13 @@ function prevImage() {
   left: 0;
   transition: transform 0.3s ease;
 }
+
+.polaroidText{
+  font-family: "Indie Flower", cursive;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 .polaroid img {
     margin-top: 10px;
   width: 200px;
@@ -109,10 +161,8 @@ function prevImage() {
 .modal-content img {
   max-width: 100%;
   max-height: 80vh;
-  border-radius: 8px;
 }
 .caption {
-  color: #fff;
   margin-top: 10px;
 }
 
@@ -125,16 +175,19 @@ function prevImage() {
   border: none;
   cursor: pointer;
   user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.prev { left: 50px; }
-.next { right: 50px; }
+.prev { left: 25px; }
+.next { right: 25px; }
 
 .close {
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: 15px;
+  right: 10px;
   font-size: 2rem;
-  color: white;
+  color: #39afa5;
   background: none;
   border: none;
   cursor: pointer;

@@ -75,7 +75,7 @@ const options = {
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 350px;
+    width: 320px;
     height: 400px;
     background-color: #e5e5ef;
     position: relative;
@@ -92,7 +92,7 @@ const options = {
     }
 
     .image{
-      margin-top: 25px;
+      margin-top: 10px;
       width: 300px;
       height: 300px;
       object-fit: center;

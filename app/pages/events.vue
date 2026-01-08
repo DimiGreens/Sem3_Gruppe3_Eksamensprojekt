@@ -16,6 +16,7 @@
                 <p class="dis">I denne udgave af vores velkendte musik bingo er genren 90’erne. Kom og vær med til en fest og vind lækre præmier når din plade er fuld</p>
                 <p class="date">15/01-2026</p>
                 <div class="btnHolder">
+                    <!-- Her bruger vi vores "Button"-komponent med teksten 'Book bord' hvor den linker til 'book' siden -->
                     <Button label="Book bord" to="/book"/>
                 </div>
             </article>
@@ -25,6 +26,7 @@
                 <p class="dis">Kom og vær med til et brag af en fest, når Kira Skov endnu engang besøger caféen. Kira har alle sine kendte numre med og vi sørger for øl bag baren.</p>
                 <p class="date">16/01-2026</p>
                 <div class="btnHolder">
+                    <!-- Her bruger vi vores "Button"-komponent med teksten 'Book bord' hvor den linker til 'book' siden -->
                     <Button label="Book bord" to="/book"/>
                 </div>
             </article>
@@ -34,6 +36,7 @@
                 <p class="dis">Kan du huske denne ikoniske duo? De ligger vejen forbi Café Ulla Terkelsen London endnu engang, kom og vær med til et hyggeligt selskab og gode toner når LOFN gæster os igen.</p>
                 <p class="date">27/01-2026</p>
                 <div class="btnHolder">
+                    <!-- Her bruger vi vores "Button"-komponent med teksten 'Book bord' hvor den linker til 'book' siden -->
                     <Button label="Book bord" to="/book"/>
                 </div>
             </article>
@@ -41,6 +44,7 @@
                 <h3>Har du nogle spørgsmål?</h3>
                 <p>Vi vil så gerne servicerer dig! Fandt du ikke hvad du søgte eller er du en kunstner, som gerne vil optræde hos os? Tøv ikke med at sende til spørgsmål afsted i vores retning.</p>
                 <div class="btnHolder">
+                    <!-- Her bruger vi vores "Button"-komponent med teksten 'Kontakt os her' hvor den linker til 'contact' siden -->
                     <Button label="Kontakt os her" to="contact"/>
                 </div>
             </article>

@@ -1,3 +1,4 @@
+<!-- Nedenstående SVG og Skriveanimation er lavet med AI -->
 <script setup>
 import { ref, onMounted } from 'vue'
 const svgRef = ref(null)

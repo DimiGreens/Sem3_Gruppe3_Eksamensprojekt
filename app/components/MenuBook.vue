@@ -1,7 +1,9 @@
 <script setup>
+// Vi importere ref, computed og onMounted fra Vue
+// computed bruges til at lave afledte værdier, som automatisk opdateres, når deres afhængige reaktive variabler ændrer sig
 import { ref, computed, onMounted } from 'vue'
 
-// Props SKAL komme først
+// Props som skal indeholde forside og retter til menukort. Her kan indhold tilrettelægges alt efter behov
 const props = defineProps({
   pages: {
     type: Array,
@@ -22,7 +24,7 @@ const props = defineProps({
   }
 })
 
-// Forside
+// Forsiden til menukortet som indeholder props som skal vises på grænsefladen
 const coverPage = computed(() => {
   return {
     isCover: true,
@@ -31,42 +33,57 @@ const coverPage = computed(() => {
   }
 })
 
-// Samlede sider (forside + indhold)
+// En funktion som indeholder forside samt andre sider i menukortet
 const bookPages = computed(() => {
   return [coverPage.value, ...props.pages]
 })
 
+// En variabel som holder på den nuværende side
 const currentPage = ref(0)
+
+// En variabel som indeholder navigationen i menukortet
 const direction = ref('next')
 
+// En variabel som indeholder alle siderne i menukortet
 const totalPages = computed(() => bookPages.value.length)
 
+// En funktion som skifter til næste side
 const nextPage = () => {
+  // Hvis det ikke er den sidste side
   if (currentPage.value < totalPages.value - 1) {
     direction.value = 'next'
+    // Tilføj en (Gå til næste side)
     currentPage.value++
   }
 }
 
+// En funktion som skifter til forrige side
 const prevPage = () => {
+  // Hvis det ikke er den første side
   if (currentPage.value > 0) {
     direction.value = 'prev'
+    // Tag en fra (Gå til forrige side)
     currentPage.value--
   }
 }
 
+// En eventlistener som lytter efter klik på tastaturet. Hvis man trykker på højre eller venstre tast, navigere i menukortet tilsvarende i den tilsvarende retning
 onMounted(() => {
   window.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') nextPage()
     if (e.key === 'ArrowLeft') prevPage()
   })
 })
-
 </script>
 
 <template>
 <div class="book-wrapper">
+  <!-- aria-label gør det lettere for skærmlæsere -->
   <article class="book" aria-label="Menu bog">
+    <!-- En section som virker som siderne i menukortet. -->
+     <!-- Her looper vi gennem indholdet fra tidligere nævnte liste, som så bliver indsat på grænsefladen -->
+      <!-- Baggrunden på siden får en farvrig stribet baggrund -->
+       <!-- Her bliver der også tilføjet 'flip' og 'flipback' i style, som bruges når brugeren navigere i kortet -->
     <section
   v-for="(page, index) in bookPages"
   :key="index"
@@ -87,6 +104,8 @@ onMounted(() => {
     )`
   }"
 >
+
+<!-- Hvis indholdet tilhører 'forsiden', så indsæt det bestemt indhold -->
   <template v-if="page.isCover">
     <div class="cover-content">
       <div class="coverBanner">
@@ -99,6 +118,7 @@ onMounted(() => {
     </div>
   </template>
 
+  <!-- Ellers indsæt alt det normale indhold -->
   <template v-else>
     <h2>{{ page.title }}</h2>
 
@@ -115,7 +135,7 @@ onMounted(() => {
 
   </article>
 
-  <!-- Bogmærker -->
+  <!-- Knapper som virker som bogmærker. Her looper vi igen gennem listen, og giver hvert bogmærke et tilsvarende index og titel. -->
   <nav class="bookmarks">
     <button
   v-for="(page, index) in props.pages"
@@ -132,6 +152,8 @@ onMounted(() => {
   {{ page.title }}
 </button>
   </nav>
+
+  <!-- Vores navigation til menukortet -->
   <nav class="controls" aria-label="Bladre navigation">
     <button
       @click="prevPage"
@@ -241,7 +263,6 @@ onMounted(() => {
   overflow: hidden;
 }
 
-/* Bogmærke-container */
 .bookmarks {
   position: absolute;
 
@@ -255,8 +276,6 @@ onMounted(() => {
   pointer-events: auto;
 }
 
-
-/* Individuelle bogmærker */
 .bookmark {
   width: 40px;
   height: 80px;
@@ -277,7 +296,6 @@ onMounted(() => {
 
   transition: transform 0.2s ease, background 0.2s ease;
 }
-
 
 .page {
   position: absolute;
@@ -305,7 +323,6 @@ onMounted(() => {
   justify-content: space-between;
 }
 
-/* Screenreader only */
 .sr-only {
   position: absolute;
   left: -9999px;
@@ -323,13 +340,11 @@ onMounted(() => {
 }
 
 
-/* Den side der flipper væk (næste) */
+/* 'Blandre'-animationen på siderne, som afspilles når brugeren navigere i menukortet */
 .page.flip {
   transform: rotateY(-180deg);
   z-index: 3;
 }
-
-/* Den side der flipper tilbage */
 .page.flipBack {
   transform-origin: right center;
   transform: rotateY(180deg);

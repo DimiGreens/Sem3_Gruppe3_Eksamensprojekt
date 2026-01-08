@@ -1,5 +1,5 @@
 <script setup>
-import Form from '../components/Form.vue';
+
 </script>
 
 <template>
@@ -11,6 +11,7 @@ import Form from '../components/Form.vue';
 </section>
 <section>
 <h2>Send en Mail</h2>
+<!-- Vores 'Form'-komponent -->
 <Form />
 </section>
 </main>

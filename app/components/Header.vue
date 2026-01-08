@@ -1,28 +1,45 @@
 <script setup>
+// Vi importere ref, onMounted & onUnmounted
+// onUnmounted køres når et element fjernes fra grændefladen
 import { ref, onMounted, onUnmounted } from 'vue'
 
+// Reaktive variabler
 const isOpen = ref(false)
 const isMobile = ref(false)
 
+// En variabel som tjekker efter en bestemt skærmbredde, i dette tilfælde 700px. Skal bruges til at styrer navigationsbaren
 const checkScreen = () => {
+  // isMobile er true hvis skærmbredden er mindre en 700px
   isMobile.value = window.innerWidth < 700
+  // Hvis isMobile er false (skærmbredde større end 700px), så er isOpen true
   if (!isMobile.value) isOpen.value = true
 }
 
+// Når elementet vises på grændefladen
 onMounted(() => {
+  // Kør checkScreen funktionen
   checkScreen()
+  // Tilføj en eventlistener på siden, som lytter efter 'resize' (ændres skærmbredden)
   window.addEventListener('resize', checkScreen)
 })
 
+// Når elementet fjernes
 onUnmounted(() => {
+  // Fjern eventlisteneren
   window.removeEventListener('resize', checkScreen)
 })
 
+// De tidligere nævnte eventlisteners gør, at isMobile variablen skifter mellem true eller false, alt efter brugerens skærmbredde
+
+// En variabel som skal åbne menuen
 const toggleNav = () => {
+  // isOpen (Som normalt er false) skiftes til !isOpen (Skiftes til true)
   isOpen.value = !isOpen.value
 }
 
+// En variabel som skal lukke menuen
 const closeNav = () => {
+  // Skift isOpen() til false
   isOpen.value = false
 }
 </script>
@@ -33,8 +50,10 @@ const closeNav = () => {
     <button v-if="isMobile" @click="toggleNav"><FontAwesomeIcon :icon="['fas', 'bars']" class="fontIcon" /></button>
     <transition name="slide">
       <nav v-show="isOpen" class="nav">
+        <!-- Vores navigationsbar som ændres alt efter skærmbredde -->
         <button v-if="isMobile" class="close-btn" @click="closeNav"><FontAwesomeIcon :icon="['fas', 'x']" class="fontIcon" /></button>
         
+        <!-- Vores links til undersider, hvor navigationsbaren lukkes igen efter man har trykket -->
         <NuxtLink to="/" @click="isMobile && closeNav()">Forside</NuxtLink>
         <NuxtLink to="/menu" @click="isMobile && closeNav()">Menu</NuxtLink>
         <NuxtLink to="/book" @click="isMobile && closeNav()">Book bord</NuxtLink>
@@ -145,6 +164,7 @@ button {
   transform: translateX(100%);
 }
 
+/* Vores medie query som ændre på navigationsbarens udseende alt efter skærmbredde */
 @media screen and (min-width: 700px) {
   header {
     background-color: grey;

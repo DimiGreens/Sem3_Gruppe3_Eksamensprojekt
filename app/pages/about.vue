@@ -12,14 +12,17 @@
         </section>
         <section>
             <h3>Personalet's galleri</h3>
+            <!-- Vores 'PhotoStack'-komponent som indeholder billeder stylet efter Polariod-billeder, hvor man kan trykke og se alle billeder i et slideshow -->
             <PhotoStack />
             <h3>Caféens galleri</h3>
+            <!-- Vores 'PhotoStack'-komponent som indeholder billeder stylet efter Polariod-billeder, hvor man kan trykke og se alle billeder i et slideshow -->
             <PhotoStack2 />
         </section>
         <section>
             <h3>Har vi overbevist dig endnu?</h3>
             <p>Så synes vi at du burde gå ned og booke bord hos os, vi lover vi ikke skuffer dig.</p>
             <div class="btnHolder">
+                <!-- Her bruger vi vores "Button"-komponent med teksten 'Book bord' hvor den linker til 'book' siden -->
                 <Button label="Book bord" to="/book"/>
             </div>
         </section>
@@ -27,6 +30,7 @@
             <h3>Har du flere spørgsmål?</h3>
             <p>Vi vil så gerne servicere dig! Fandt du ikke hvad du søgte eller har du spørgsmål til os, så kontakt os ved at klikke på knappen herunder.</p>
             <div class="btnHolder">
+                <!-- Her bruger vi vores "Button"-komponent med teksten 'Kontakt' hvor den linker til 'contact' siden -->
                 <Button label="Kontakt" to="/contact"/>
             </div>
         </section>

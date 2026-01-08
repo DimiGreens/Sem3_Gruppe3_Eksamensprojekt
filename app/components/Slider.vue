@@ -1,9 +1,10 @@
 <script setup>
+// Her importere vi 'Splide'-biblioteket, samt udvidelsespakken 'AutoScroll' som skal bruges til at lave en slider 
 import { Splide, SplideSlide } from '@splidejs/vue-splide'
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll'
-
 import '@splidejs/splide/css'
 
+// Indholdet som skal være i slideren
 const images = [
   {
     title: 'Test 1',
@@ -37,6 +38,7 @@ const images = [
   },
 ]
 
+// Diverse indstillinger som skal bruges til at styrer slideren
 const options = {
   type: 'loop',
   perPage: 1,
@@ -57,6 +59,7 @@ const options = {
 <template>
   <ClientOnly>
     <Splide :options="options" :extensions="{ AutoScroll }">
+      <!-- Her bliver der loopet igennem vores indhold fra tidligere nævte array, hvor indhold bliver sat efterfølgende -->
       <SplideSlide v-for="(image, index) in images" :key="index">
           <div class="imgHolder">
             <img class="image" :src="image.url" />

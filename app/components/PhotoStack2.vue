@@ -5,12 +5,20 @@ import { ref } from 'vue'
 // En liste af farver som skal bruges på grænsefladen
 const colorWheel = ['#f4c4a4', '#f6dfa2', '#c4e3b5', '#acd0ec', '#c7b1e7']
 
+// Vi importere vores billeder
+import cafe1 from '@/assets/img/cafe1.png'
+import cafe7 from '@/assets/img/cafe7.png'
+import cafe4 from '@/assets/img/cafe4.png'
+import cafe6 from '@/assets/img/cafe6.png'
+import cafe25 from '@/assets/img/cafe25.png'
+
 // Indhold som skal indsættes på grænsefladen
 const images = ref([
-  { title: "test1", date: "1-1-1111", url: 'https://unsplash.it/300?1' },
-  { title: "test2", date: "2-2-2222", url: 'https://unsplash.it/300?2' },
-  { title: "test3", date: "3-3-3333", url: 'https://unsplash.it/300?3' },
-  { title: "test4", date: "4-4-4444", url: 'https://unsplash.it/300?4' },
+  { title: "12/04-2025", date: "", url: cafe1 },
+  { title: "15/06-2025", date: "", url: cafe7 },
+  { title: "31/12-2025", date: "", url: cafe4 },
+  { title: "12/04-2025", date: "", url: cafe6 },
+  { title: "12/04-2025", date: "", url: cafe25 },
 ])
 
 // En funktion som har til formål at rotere billederne tilfældigt
@@ -61,7 +69,7 @@ function prevImage() {
       class="polaroid"
       :style="[randomRotation(i), {backgroundColor: colorWheel[i % colorWheel.length]} ]"
     >
-      <img :src="img.url" alt="" />
+      <img class="photoPile" :src="img.url" alt="" />
       <p class="polaroidText">{{ img.title }}</p>
     </div>
   </div>
@@ -71,7 +79,7 @@ function prevImage() {
     <div class="modal-content">
       <button class="prev" @click.stop="prevImage"><FontAwesomeIcon :icon="['fas', 'arrow-left']" class="leftIcon" />Forrige</button>
       <div class="photoFrame" :style="{ backgroundColor: colorWheel[currentIndex % colorWheel.length] }">
-        <img :src="images[currentIndex].url" alt="" />
+        <img class="photoModal" :src="images[currentIndex].url" alt="" />
         <p class="photoTitle">{{ images[currentIndex].title }}</p>
         <p class="photoDate">{{ images[currentIndex].date }}</p>
       </div>
@@ -85,6 +93,17 @@ function prevImage() {
 </template>
 
 <style scoped>
+.photoModal{
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.photoPile{
+  width: 200px;
+  height: 200px;
+}
+
 .leftIcon, .rightIcon{
   color: #39afa5;
     width: 30px;
@@ -202,7 +221,7 @@ function prevImage() {
   top: 15px;
   right: 10px;
   font-size: 2rem;
-  color: #39afa5;
+  color: white;
   background: none;
   border: none;
   cursor: pointer;

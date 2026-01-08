@@ -4,38 +4,34 @@ import { Splide, SplideSlide } from '@splidejs/vue-splide'
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll'
 import '@splidejs/splide/css'
 
+// Vi importere vores billeder
+import sol from '@/assets/img/sol.svg'
+import cafe20 from '@/assets/img/cafe20.png'
+import cafe21 from '@/assets/img/cafe21.png'
+import cafe24 from '@/assets/img/cafe24.png'
+
 // Indholdet som skal være i slideren
 const images = [
   {
-    title: 'Test 1',
-    date: '01/01/2026',
-    url:'https://unsplash.it/300?1'
+    title: 'Musik Bingo 90erne',
+    date: '15/01-2026',
+    url: cafe20
   },
   {
-    title: 'Test 2',
-    date: '01/01/2026',
-    url:'https://unsplash.it/300?2'
+    title: 'ULLAUNPLUGGED Kira Skov',
+    date: '16/01-2026',
+    url: cafe21
   },
   {
-    title: 'Test 3',
-    date: '01/01/2026',
-    url:'https://unsplash.it/300?3'
+    title: 'ULLAUNPLUGGED LOFN',
+    date: '28/01-2026',
+    url: cafe24
   },
   {
-    title: 'Test 4',
-    date: '01/01/2026',
-    url:'https://unsplash.it/300?4'
-  },
-  {
-    title: 'Test 5',
-    date: '01/01/2026',
-    url:'https://unsplash.it/300?5'
-  },
-  {
-    title: 'Test 6',
-    date: '01/01/2026',
-    url:'https://unsplash.it/300?6'
-  },
+    title: 'Solen går altså ned med stil i vest',
+    date: '24/7',
+    url: sol
+  }
 ]
 
 // Diverse indstillinger som skal bruges til at styrer slideren
@@ -98,7 +94,7 @@ const options = {
       margin-top: 10px;
       width: 300px;
       height: 300px;
-      object-fit: center;
+      object-fit: cover;
     }
   }
 

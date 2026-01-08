@@ -3,15 +3,17 @@
 import MenuBook from '~/components/MenuBook.vue';
 import Writing from '~/components/Writing.vue';
 
+import burger from '@/assets/img/burger.svg'
+
 // Nedenstående lister indeholder blot indhold som skal være i menuerne. Indholdet bliver sendt via props til MenuBook-komponenten
 const kat = [
   {
     title: 'Morgenmad',
     items: [
-      { name: 'Æg', price: 45 },
-      { name: 'Bacon', price: 25 },
-      { name: 'Ost', price: 75 },
-      { name: 'Ost', price: 75 },
+      { name: 'Toast', price: 135, desc: "m. skinke og ost. Servers m. spejlæg på toppen" },
+      { name: 'Krydret toast', price: 135, desc: "m. oksekødspølse. Servers m. spejlæg på toppen" },
+      { name: 'Avocadomad', price: 98, desc: " m. tomat, mayonnaise og friske urter" },
+      { name: 'Hjemmebagt brød', price: 56, desc: "m. ost, marmelade og smør" },
     ],
   }]
 
@@ -38,7 +40,7 @@ const kat = [
           <section>
             <h3>Vi serverer god! Også ud af huset</h3>
             <div class="bookHolder">
-              <MenuBook :pages="kat" />
+              <MenuBook :pages="kat" :coverImage="burger"/>
             </div>
           </section>
           <section>

@@ -21,6 +21,9 @@ const props = defineProps({
   coverSubtitle: {
     type: String,
     default: 'Noget til en hver smag'
+  },
+  coverImage: {
+    type: String,
   }
 })
 
@@ -111,7 +114,7 @@ onMounted(() => {
       <div class="coverBanner">
         <h3>{{ page.title }}</h3>
       </div>
-      <img class="coverImage" src="../assets/img/ullaTLogo.jpg" alt="">
+      <img class="coverImage" :src="coverImage" alt="">
       <div class="subCoverBanner">
         <p v-if="page.subTitle">{{ page.subTitle }}</p>
       </div>

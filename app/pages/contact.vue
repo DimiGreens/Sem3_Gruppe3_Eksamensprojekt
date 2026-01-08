@@ -40,4 +40,16 @@ h2{
     margin-bottom: 100px;
 }
 
+@media screen and (min-width: 768px){
+  main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  section{
+    width: 680px;
+  }
+}
+
 </style>

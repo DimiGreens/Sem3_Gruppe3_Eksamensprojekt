@@ -10,7 +10,7 @@ const isMobile = ref(false)
 // En variabel som tjekker efter en bestemt skærmbredde, i dette tilfælde 700px. Skal bruges til at styrer navigationsbaren
 const checkScreen = () => {
   // isMobile er true hvis skærmbredden er mindre en 700px
-  isMobile.value = window.innerWidth < 700
+  isMobile.value = window.innerWidth < 768
   // Hvis isMobile er false (skærmbredde større end 700px), så er isOpen true
   if (!isMobile.value) isOpen.value = true
 }
@@ -46,7 +46,9 @@ const closeNav = () => {
 
 <template>
   <header id="top">
+  <NuxtLink to="/" @click="isMobile && closeNav()">
     <img src="../assets/img/ullaTLogo.jpg" alt="Cafe logo" class="cafeLogo">
+  </NuxtLink>
     <button v-if="isMobile" @click="toggleNav"><FontAwesomeIcon :icon="['fas', 'bars']" class="fontIcon" /></button>
     <transition name="slide">
       <nav v-show="isOpen" class="nav">
@@ -165,9 +167,10 @@ button {
 }
 
 /* Vores medie query som ændre på navigationsbarens udseende alt efter skærmbredde */
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 768px) {
   header {
-    background-color: grey;
+    background-color: #1d1d1b;
+    height: 50px;
   }
 
   .nav {
@@ -186,6 +189,15 @@ button {
 
   button {
     display: none;
+  }
+
+  .openHours{
+    display: none;
+  }
+
+  .cafeLogo{
+    width: 100px;
+    height: 80px;
   }
 }
 </style>

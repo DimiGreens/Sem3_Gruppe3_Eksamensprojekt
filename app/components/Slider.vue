@@ -38,16 +38,34 @@ const images = [
 const options = {
   type: 'loop',
   perPage: 1,
-  gap: '4rem',
   arrows: false,
   pagination: false,
   drag: false,
   autoplay: false,
   pauseOnHover: false,
   pauseOnFocus: false,
+
   autoScroll: {
     speed: 1,
     autoStart: true,
+  },
+
+  breakpoints: {
+    767: {
+      perPage: 1,
+    },
+    1024: {
+      perPage: 2,
+    },
+    1200:{
+      perPage: 2
+    },
+    1400:{
+      perPage: 2
+    },
+    1920: {
+      perPage: 2
+    }
   },
 }
 </script>
@@ -76,7 +94,7 @@ const options = {
     flex-direction: column;
     width: 320px;
     height: 400px;
-    background-color: #e5e5ef;
+    background-color: #acd0ec;
     position: relative;
 
     .dateHolder{
@@ -103,4 +121,6 @@ const options = {
     font-size: 1.2rem;
     font-weight: bold;
   }
+
+
 </style>

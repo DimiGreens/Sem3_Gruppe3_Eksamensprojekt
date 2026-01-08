@@ -31,8 +31,6 @@ onMounted(() => {
 <div class="svg-wrapper">
 <svg
       ref="svgRef"
-      width="266"
-      height="23"
       viewBox="0 0 280 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -44,5 +42,14 @@ onMounted(() => {
 <style scoped>
 .svg-wrapper {
   padding: 20px;
+}
+.svg-wrapper svg {
+  width: 80vw;
+  height: auto;
+}
+@media screen and (min-width: 700px){
+  svg{
+    max-width: 600px;
+  }
 }
 </style>

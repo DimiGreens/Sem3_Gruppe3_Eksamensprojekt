@@ -27,7 +27,7 @@ useHead({
         <p>Tryk på bordene for at se nummer, pladser og tilgøngelighed.</p>
         <div class="imgHolder">
             <!-- Billede/PNG lavet ved brug af generativ AI -->
-            <img src="../assets/img/bordplan.png" alt="">
+            <img class="tableImage" src="../assets/img/bordplan.png" alt="">
         </div>
     </main>
 </template>
@@ -45,5 +45,26 @@ useHead({
 
 img{
     width: 320px;
+}
+
+@media screen and (min-width: 768px){
+    main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p{
+            width: 680px;
+        }
+    }
+
+    .tableImage{
+        width: 430px;
+    }
+}
+
+@media screen and (min-width: 1100px){
+  .tableImage{
+    width: 480px
+  }
 }
 </style>

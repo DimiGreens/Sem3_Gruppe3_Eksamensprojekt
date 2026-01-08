@@ -208,11 +208,11 @@ const newYearsEve = [
         <div class="btnHolder">
           <Button label="Send forespørgsel" to="/contact"/>
         </div>
-        <MenuBook :pages="christmas" :colors="['#acd0ec', '#97c4e7']" :coverImage="christmasImg" />
+        <MenuBook class="christmasBook" :pages="christmas" :colors="['#acd0ec', '#97c4e7']" :coverImage="christmasImg" />
         <div class="btnHolder">
-          <Button label="Book bord" to="/book" />
+          <Button class="bookBordBtn" label="Book bord" to="/book" />
         </div>
-        <MenuBook :pages="newYearsEve" :colors="['#c7b1e7', '#b99de1']" :coverImage="newYear" />
+        <MenuBook class="newYearBook" :pages="newYearsEve" :colors="['#c7b1e7', '#b99de1']" :coverImage="newYear" />
         <div class="btnHolder">
           <Button label="Book bord" to="/book" />
         </div>
@@ -268,5 +268,63 @@ const newYearsEve = [
 .fade-up-enter-to,
 .fade-up-leave-from {
   opacity: 1;
+}
+
+@media screen and (min-width: 768px){
+  main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  div{
+    max-width: 860px;
+    width: 100%;
+  }
+
+  .btnHolder{
+    display: flex;
+    justify-content: center;
+  }
+
+}
+
+@media screen and (min-width: 1024px){
+  .book-wrapper {
+    transform: none !important;
+    transition: none !important;
+  }
+  .book-wrapper.show {
+    transform: none;
+  }
+
+  .menues{
+    width: 80vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .btnHolder{
+    grid-column: 1 / -1;
+  }
+
+  h3{
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+
+  .christmasBook{
+    grid-column: 2;
+    grid-row: 5;
+  }
+
+  .bookBordBtn{
+    display: none;
+  }
+
+  .newYearBook{
+    grid-column: 1 / -1;
+  }
 }
 </style>

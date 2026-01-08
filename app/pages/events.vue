@@ -20,9 +20,9 @@ useHead({
         <section>
             <h1>Events</h1>
             <p>Her kan du se hvilke events vi hoster, både kommende og tideligere afholdte events. Hvis der er noget der interessere dig så kan du kontakte os og købe billet, og hvis du opdager et event der tideligere er afholdt så hold dig opdateret da vi godt kan finde på at hoste et event lignende igen.</p>
-        </section>
-        <section>
             <h2>Kommende events</h2>
+        </section>
+        <section class="eventWrapper">
             <article class="event">
                 <h3>Musik Bingo - 90'erne</h3>
                 <img class="eventImage" src="../assets/img/cafe20.png" alt="Musik Bingo">
@@ -53,15 +53,15 @@ useHead({
                     <Button label="Book bord" to="/book"/>
                 </div>
             </article>
-            <article>
-                <h3>Har du nogle spørgsmål?</h3>
-                <p>Vi vil så gerne servicerer dig! Fandt du ikke hvad du søgte eller er du en kunstner, som gerne vil optræde hos os? Tøv ikke med at sende til spørgsmål afsted i vores retning.</p>
-                <div class="btnHolder">
-                    <!-- Her bruger vi vores "Button"-komponent med teksten 'Kontakt os her' hvor den linker til 'contact' siden -->
-                    <Button label="Kontakt os her" to="contact"/>
-                </div>
-            </article>
         </section>
+        <article>
+            <h3>Har du nogle spørgsmål?</h3>
+            <p>Vi vil så gerne servicerer dig! Fandt du ikke hvad du søgte eller er du en kunstner, som gerne vil optræde hos os? Tøv ikke med at sende til spørgsmål afsted i vores retning.</p>
+            <div class="btnHolder">
+                <!-- Her bruger vi vores "Button"-komponent med teksten 'Kontakt os her' hvor den linker til 'contact' siden -->
+                <Button label="Kontakt os her" to="contact"/>
+            </div>
+        </article>
     </main>
 </template>
 
@@ -75,5 +75,35 @@ useHead({
     width: 100%;
     height: 250px;
     object-fit: cover;
+}
+
+@media screen and (min-width: 768px){
+    main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .eventWrapper{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    
+    main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-inline: 10rem;
+    }
+
+    .eventWrapper{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
 }
 </style>

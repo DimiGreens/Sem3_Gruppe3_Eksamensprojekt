@@ -388,5 +388,18 @@ onMounted(() => {
   font-style: italic;
 }
 
+@media screen and (min-width: 768px){
+  .book{
+    width: 500px;
+    height: 750px;
+  }
+}
+
+@media screen and (min-width: 1024px){
+  .book{
+    width: 380px;
+  height: 560px;
+  }
+}
 
 </style>

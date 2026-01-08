@@ -22,13 +22,17 @@ useHead({
             <p>Om at drive cafe eller farverig bodega I vestbyen. Her er livet fyldt med tåbelige indfald, vanvittige ideer og store drømme. Her danses der gennem både op og nedture, men vinylerne spinder i baggrunden og gamle røverhistorier bliver genfortalt. Der er venskaber, der har fulgt os i årevis- de blev skabt over en kop kaffe, en sen øl eller et grin midt i travlheden. For dem er vi evigt taknemmelig (Jeg håber aldrig det stopper). Her er fyldt med voldsomme følelser, særligt når det gælder Aab, musikken, stolene, valg af farver, ja selv trappen er et emne. Men her er også fyldt med små fællesskaber, bogklubber, keramik, teater, strikkeklubber og selvfølgelig, den største - musikken altid musikken.</p>
             <p>Vi ved jo godt at solen står op i øst- men den går altså ned med stil i vest</p>
         </section>
-        <section>
+        <section class="gallery">
             <h3>Personalet's galleri</h3>
             <!-- Vores 'PhotoStack'-komponent som indeholder billeder stylet efter Polariod-billeder, hvor man kan trykke og se alle billeder i et slideshow -->
-            <PhotoStack />
+             <div class="galleryHolder1">
+                 <PhotoStack/>
+             </div>
             <h3>Caféens galleri</h3>
             <!-- Vores 'PhotoStack'-komponent som indeholder billeder stylet efter Polariod-billeder, hvor man kan trykke og se alle billeder i et slideshow -->
-            <PhotoStack2 />
+             <div class="galleryHolder2">
+                 <PhotoStack2/>
+             </div>
         </section>
         <section>
             <h3>Har vi overbevist dig endnu?</h3>
@@ -55,5 +59,32 @@ useHead({
 .btnHolder{
     display: flex;
     justify-content: center;
+}
+
+@media screen and (min-width: 768px){
+    main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    h3{
+        text-align: center;
+    }
+    .gallery{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 10rem;
+    }
+    .galleryHolder1{
+        grid-column: 1;
+        grid-row: 1;
+    }
+    .galleryHolder2{
+        grid-row: 1;
+        grid-column: 2;
+    }
+    section{
+        max-width: 800px;
+    }
 }
 </style>

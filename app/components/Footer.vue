@@ -19,14 +19,16 @@
             <p class="contact"><FontAwesomeIcon :icon="['fas', 'phone']" class="contantIcon" /> +45 98 15 80 00</p>
             <p class="contact"><FontAwesomeIcon :icon="['fas', 'envelope']" class="contantIcon" /> cafeullaterkelsenlondon@gmail.com</p>
         </div>
-        <h4>Åbningstider</h4>
-        <p>Mandag: lukket</p>
-        <p>Tirsdag: 11:00 - 23:30</p>
-        <p>Onsdag: 11:00 - 23:30</p>
-        <p>Torsdag: 11:00 - 23:30</p>
-        <p>Fredag: 13:00 - 02:00</p>
-        <p>Lørdag: 10:00 - 02:00</p>
-        <p>Søndag: lukket</p>
+        <div class="open">
+            <h4>Åbningstider</h4>
+            <p>Mandag: lukket</p>
+            <p>Tirsdag: 11:00 - 23:30</p>
+            <p>Onsdag: 11:00 - 23:30</p>
+            <p>Torsdag: 11:00 - 23:30</p>
+            <p>Fredag: 13:00 - 02:00</p>
+            <p>Lørdag: 10:00 - 02:00</p>
+            <p>Søndag: lukket</p>
+        </div>
     </section>
 </footer>
 </template>
@@ -87,4 +89,21 @@ footer{
         gap: 2rem;
     }
 }
+
+@media screen and (min-width: 768px){
+    .footerLinks{
+        margin: 0 7rem;
+    }
+
+    .info{
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+    }
+
+    p{
+        font-size: 1.2rem;
+    }
+}
+
 </style>

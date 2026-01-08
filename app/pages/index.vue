@@ -35,17 +35,14 @@ const kat = [
 </script>
 
 <template>
+  <div id="Welcome" class="writingHolder">
+    <h1 class="welcomeText">Velkommen hos</h1>
+    <Writing class="writing"/>
+    <p class="opening">Åben i dag: 11:00 - 23:30</p>
+  </div>
     <main>
-      <div id="Welcome" class="writingHolder">
-        <img class="light1" src="../assets/img/lys.png">
-        <img class="light2" src="../assets/img/lys2.png">
-        <img class="light2" src="../assets/img/lys3.png">
-        <h1 class="welcomeText">Welcome hos</h1>
-        <Writing class="writing"/>
-        <p class="opening">Åben i dag: 11:00 - 23:30</p>
-      </div>
-        <h2>Kom indenfor!</h2>
-        <section>
+      <section>
+          <h2>Kom indenfor!</h2>
             <p>Vi har åbnet dørene for dig! Vi byder dig velkommen til en farverig café hvor tåbelige indfald, vanvittige idéer og store drømme står øverst på dagsordenen. Med et stort udvalg af lækker mad og fede events holder vi en fest hver dag. Det søde personale er klar til at give dig service i verdensklasse, men du behøver ikke snakke med dem før du har fået din morgen kaffe ;) </p>
             <div class="btnHolder">
               <!-- Her bruger vi vores "Button"-komponent med teksten 'Mere om Caféen' hvor den linker til 'about' siden -->
@@ -57,11 +54,6 @@ const kat = [
             <div class="bookHolder">
               <MenuBook :pages="kat" :coverImage="burger"/>
             </div>
-          </section>
-          <section>
-            <h3>Kan du høre det?</h3>
-            <p>Hos Café Ulla Terkelsen, London spiller vi lette og lækre toner. Start playlisten og oplev derhjemme hvordan tonerne skaber god stemning.</p>
-            <h3>PLAYLISTE</h3>
           </section>
           <section>
             <h3>Ullas events</h3>
@@ -93,10 +85,18 @@ const kat = [
             <button class="upBtn"><FontAwesomeIcon :icon="['fas', 'arrow-up']" class="fontIcon" /></button>
           </a>
         </div>
-    </main>
-</template>
+      </main>
+    </template>
 
 <style scoped>
+  
+  #Welcome{
+    height: 250px;
+    max-width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-image: url(../assets/img/lightBackgroundDim.png);
+  }
 
 .fontIcon{
   width: 40px;
@@ -131,6 +131,7 @@ const kat = [
   top: 90px;
   left: 50%;
   transform: translateX(-50%);
+  opacity: 1;
 }
 
 .opening {
@@ -141,6 +142,7 @@ const kat = [
   white-space: nowrap;
   font-family: "Indie Flower", cursive;
   font-size: 1.2rem;
+  opacity: 1;
 }
 
 .welcomeText{
@@ -151,6 +153,7 @@ const kat = [
   white-space: nowrap;
   font-family: "Indie Flower", cursive;
   font-size: 1.2rem;
+  opacity: 1;
 }
 
 .bookHolder{
@@ -170,5 +173,65 @@ const kat = [
 }
 section{
     margin: 1rem 0;
+}
+
+@media screen and (min-width: 768px){
+  .light1, .light2, .light3{
+    display: none;
+  }
+
+  section > *{
+    margin: 0;
+  }
+
+  .writing{
+    top: 150px;
+  }
+
+  .opening{
+    top: 250px;
+    font-size: 2rem;
+  }
+
+  section{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 680px;
+  }
+  
+  main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #Welcome{
+    height: 400px;
+
+    h1{
+      font-size: 2.5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1100px){
+  #Welcome{
+    height: 600px;
+
+  .writing{
+  top: 250px;
+  }
+
+  .opening{
+    top: 350px;
+    font-size: 2rem;
+  }
+
+  .welcomeText{
+    top: 130px;
+  }
+
+  }
 }
 </style>

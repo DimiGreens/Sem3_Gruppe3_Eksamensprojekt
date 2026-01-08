@@ -1,30 +1,18 @@
 <script setup>
-
+import Form from '../components/Form.vue';
 </script>
 
 <template>
 <main>
-    <section>
-        <h1>Kontakt os her</h1>
-        <p>Hvad kan vi hjælpe dig med i dag? Giv et kald eller send os en mail herunder.</p>
-    </section>
-    <section>
-        <p><FontAwesomeIcon :icon="['fas', 'phone']" class="fontIcon" /> +45 98 15 80 00</p>
-    </section>
-    <section>
-        <h3>Send en mail</h3>
-        <form action="#">
-            <p>Email</p>
-            <input type="text">
-            <p>Emne</p>
-            <input type="text">
-            <p>Din besked</p>
-            <input type="text">
-        </form>
-        <div class="btnHolder">
-            <Button label="Send" to="#"/>
-        </div>
-    </section>
+<section>
+    <h1>Kontakt os her</h1>
+    <p>Hvad kan vi hjælpe dig med i dag? Giv et kald eller send os en mail herunder.</p>
+    <p>Tlf: + 45 98 15 80 00</p>
+</section>
+<section>
+<h2>Send en Mail</h2>
+<Form />
+</section>
 </main>
 </template>
 
@@ -58,8 +46,4 @@ form{
         width: 100%;
     }
 
-    input:nth-of-type(3){
-        height: 70px;
-    }
-}
 </style>

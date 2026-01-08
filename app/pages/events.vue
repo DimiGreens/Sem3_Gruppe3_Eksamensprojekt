@@ -6,50 +6,51 @@
     <main>
         <section>
             <h1>Events</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, debitis nostrum reprehenderit, inventore quo quaerat pariatur necessitatibus, in cumque molestias asperiores cum voluptas aspernatur? Voluptates facere maxime assumenda aliquam iure.</p>
+            <p>Her kan du se hvilke events vi hoster, både kommende og tideligere afholdte events. Hvis der er noget der interessere dig så kan du kontakte os og købe billet, og hvis du opdager et event der tideligere er afholdt så hold dig opdateret da vi godt kan finde på at hoste et event lignende igen.</p>
         </section>
         <section>
             <h2>Kommende events</h2>
             <article class="event">
-                <h3>Lorem ipsum dolor sit amet.</h3>
-                <p class="date">DATO</p>
-                <p class="dis">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur sint debitis eveniet sunt asperiores fugit nulla tenetur illum aperiam blanditiis sit recusandae, distinctio provident molestias? Cupiditate iusto nobis vel possimus.</p>
-                <p class="image">BILLEDE
-                </p>
+                <h3>Musik Bingo - 90'erne</h3>
+                <p class="image">BILLEDE</p>
+                <p class="dis">I denne udgave af vores velkendte musik bingo er genren 90’erne. Kom og vær med til en fest og vind lækre præmier når din plade er fuld</p>
+                <p class="date">15/01-2026</p>
+                <div class="btnHolder">
+                    <Button label="Book bord" to="/book"/>
+                </div>
             </article>
             <article class="event">
-                <h3>Lorem ipsum dolor sit amet.</h3>
-                <p class="date">DATO</p>
-                <p class="dis">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur sint debitis eveniet sunt asperiores fugit nulla tenetur illum aperiam blanditiis sit recusandae, distinctio provident molestias? Cupiditate iusto nobis vel possimus.</p>
-                <p class="image">BILLEDE
-                </p>
+                <h3>ULLAUNPLUGGED - Kira Skov</h3>
+                <p class="image">BILLEDE</p>
+                <p class="dis">Kom og vær med til et brag af en fest, når Kira Skov endnu engang besøger caféen. Kira har alle sine kendte numre med og vi sørger for øl bag baren.</p>
+                <p class="date">16/01-2026</p>
+                <div class="btnHolder">
+                    <Button label="Book bord" to="/book"/>
+                </div>
+            </article>
+            <article class="event">
+                <h3>ULLAUNPLUGGED - LOFN</h3>
+                <p class="image">BILLEDE</p>
+                <p class="dis">Kan du huske denne ikoniske duo? De ligger vejen forbi Café Ulla Terkelsen London endnu engang, kom og vær med til et hyggeligt selskab og gode toner når LOFN gæster os igen.</p>
+                <p class="date">27/01-2026</p>
+                <div class="btnHolder">
+                    <Button label="Book bord" to="/book"/>
+                </div>
+            </article>
+            <article>
+                <h3>Har du nogle spørgsmål?</h3>
+                <p>Vi vil så gerne servicerer dig! Fandt du ikke hvad du søgte eller er du en kunstner, som gerne vil optræde hos os? Tøv ikke med at sende til spørgsmål afsted i vores retning.</p>
+                <div class="btnHolder">
+                    <Button label="Kontakt os her" to="contact"/>
+                </div>
             </article>
         </section>
     </main>
 </template>
 
 <style scoped>
-.event{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-
-    h3{
-        grid-column: 1 / -1;
-    }
-
-    .dis{
-        grid-column: 1;
-    }
-
-    .date{
-        grid-column: 1;
-        margin: 0;
-    }
-
-    .image{
-        grid-column: 2;
-        background: red;
-    }
-
+.btnHolder{
+    display: flex;
+    justify-content: center;
 }
 </style>

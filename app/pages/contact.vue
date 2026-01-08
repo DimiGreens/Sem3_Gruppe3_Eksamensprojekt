@@ -17,5 +17,33 @@ import Form from '../components/Form.vue';
 </template>
 
 <style scoped>
+.fontIcon{
+    width: 30px;
+    height: 30px;
+}
+
+section:nth-of-type(2) p{
+    display: flex;
+    align-items: center;
+}
+
+.btnHolder{
+    display: flex;
+    justify-content: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-right: 10px;
+
+    p{
+        margin: 0.2rem 0;
+    }
+
+    input{
+        width: 100%;
+    }
 
 </style>

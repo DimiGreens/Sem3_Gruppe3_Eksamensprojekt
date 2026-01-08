@@ -6,25 +6,29 @@
     <main>
         <section>
             <h1>Om os</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores eos veritatis aliquam! Esse modi, aut porro voluptatibus soluta placeat accusamus ipsa itaque voluptatem ipsam voluptatum voluptas aspernatur quaerat consectetur tempore repellat nostrum deserunt iste tenetur! Vel quo rem nesciunt, unde nemo tempora, consequatur at consectetur iste beatae, voluptatibus reprehenderit repudiandae fuga voluptatum possimus facilis veritatis. Totam, odio facilis. Impedit sed sapiente consectetur quae ab soluta, quos eos neque voluptatem minus distinctio dignissimos quibusdam libero velit eaque delectus architecto fugiat magnam. Quam, sunt? Quisquam quasi nemo eum sequi corporis quod esse totam. Repellat, ratione sunt ad incidunt corrupti magnam minima eos?</p>
+            <p>Inden åbningstid- mest efter lukketid (og ja, måske lidt indimellem)</p>
+            <p>Om at drive cafe eller farverig bodega I vestbyen. Her er livet fyldt med tåbelige indfald, vanvittige ideer og store drømme. Her danses der gennem både op og nedture, men vinylerne spinder i baggrunden og gamle røverhistorier bliver genfortalt. Der er venskaber, der har fulgt os i årevis- de blev skabt over en kop kaffe, en sen øl eller et grin midt i travlheden. For dem er vi evigt taknemmelig (Jeg håber aldrig det stopper). Her er fyldt med voldsomme følelser, særligt når det gælder Aab, musikken, stolene, valg af farver, ja selv trappen er et emne. Men her er også fyldt med små fællesskaber, bogklubber, keramik, teater, strikkeklubber og selvfølgelig, den største - musikken altid musikken.</p>
+            <p>Vi ved jo godt at solen står op i øst- men den går altså ned med stil i vest</p>
         </section>
         <section>
             <h3>Personalet's galleri</h3>
-            <p>BILLEDE</p>
+            <PhotoStack />
             <h3>Caféens galleri</h3>
-            <p>BILLEDE</p>
-            <h3>Video galleri</h3>
-            <p>BILLEDE</p>
+            <PhotoStack2 />
         </section>
         <section>
             <h3>Har vi overbevist dig endnu?</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum enim vero neque vel, pariatur rem.</p>
-            <a href="#">Book bord</a>
+            <p>Så synes vi at du burde gå ned og booke bord hos os, vi lover vi ikke skuffer dig.</p>
+            <div class="btnHolder">
+                <Button label="Book bord" to="/book"/>
+            </div>
         </section>
         <section>
             <h3>Har du flere spørgsmål?</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum enim vero neque vel, pariatur rem.</p>
-            <a href="#">Kontakt</a>
+            <p>Vi vil så gerne servicere dig! Fandt du ikke hvad du søgte eller har du spørgsmål til os, så kontakt os ved at klikke på knappen herunder.</p>
+            <div class="btnHolder">
+                <Button label="Kontakt" to="/contact"/>
+            </div>
         </section>
         
 
@@ -32,5 +36,8 @@
 </template>
 
 <style scoped>
-
+.btnHolder{
+    display: flex;
+    justify-content: center;
+}
 </style>

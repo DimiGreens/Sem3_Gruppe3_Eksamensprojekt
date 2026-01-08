@@ -1,6 +1,14 @@
 <script setup>
 import MenuBook from '~/components/MenuBook.vue'
-import { onMounted, nextTick } from 'vue'
+import { onMounted, nextTick, ref } from 'vue'
+
+const isLoading = ref(true);
+
+onMounted(() => {
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 3000)
+})
 
 onMounted(async () => {
   await nextTick()
@@ -21,7 +29,6 @@ onMounted(async () => {
 
   allBooks.forEach((book) => observer.observe(book))
 })
-
 
 const kat = [
   {
@@ -61,16 +68,39 @@ const dog = [
 
 <template>
   <main>
-    <h1>Vi serverer god mad</h1>
-    <p>Nedenfor kan du se vores menukort, vi har mange muligheder, og du kan vælge lige det du gerne vil have at spise og/eller drikke.</p>
-    <p>Kig lidt længere ned og så finder du vores speciel menukort, hvor du kan købe bord til en festlig menu, til en juleforkost, nytårsmenu eller fest menu!</p>
-    <div class="menues">
-      <MenuBook :pages="kat" />
-      <MenuBook :pages="dog" :colors="['#f6dfa2', '#f4d78b']" />
-      <h2>Særlige anledninger</h2>
-      <MenuBook :pages="dog" :colors="['#c4e3b5', '#b4d6a4']" />
-      <MenuBook :pages="dog" :colors="['#acd0ec', '#97c4e7']" />
-      <MenuBook :pages="dog" :colors="['#c7b1e7', '#b99de1']" />
+    <transition name="fade-up" @after-leave="onLoadingFinished">
+      <div v-show="isLoading">
+        <h2 class="loadingText">Vi tilbereder kaffen. Vent venligst.</h2>
+        <div class="loadingHolder"></div>
+        <div class="loadingScreen">
+          <Loading />
+        </div>
+      </div>
+    </transition>
+    <div v-show="!isLoading">
+      <h1>Vi serverer god mad</h1>
+      <p>Her på siden finder du alle vores menuer fra det i caféen til særlige anledninger. Ulla’s menuer opdateres løbende for at du får lige det du ønsker dig!</p>
+      <div class="menues">
+        <MenuBook :pages="kat" />
+        <MenuBook :pages="dog" :colors="['#f6dfa2', '#f4d78b']" />
+        <h3>Har vi vækket apetitten?</h3>
+        <div class="btnHolder">
+          <Button label="Book bord" to="/book" />
+        </div>
+        <h3>Til de særlige anledninger</h3>
+        <MenuBook :pages="dog" :colors="['#c4e3b5', '#b4d6a4']" />
+        <div class="btnHolder">
+          <Button label="Send forespørgsel" to="/contact"/>
+        </div>
+        <MenuBook :pages="dog" :colors="['#acd0ec', '#97c4e7']" />
+        <div class="btnHolder">
+          <Button label="Book bord" to="/book" />
+        </div>
+        <MenuBook :pages="dog" :colors="['#c7b1e7', '#b99de1']" />
+        <div class="btnHolder">
+          <Button label="Book bord" to="/book" />
+        </div>
+      </div>
     </div>
   </main>
 </template>
@@ -90,5 +120,37 @@ const dog = [
 
 .book-wrapper.show {
   transform: translateX(0);
+}
+
+.loadingScreen{
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  inset: 0;
+  position: absolute;
+}
+
+.loadingHolder{
+  height: 100vh;
+}
+
+.loadingText{
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.fade-up-enter-active,
+.fade-up-leave-active {
+  transition: all 0.8s ease; 
+}
+
+.fade-up-enter-from,
+.fade-up-leave-to {
+  opacity: 0;
+}
+
+.fade-up-enter-to,
+.fade-up-leave-from {
+  opacity: 1;
 }
 </style>

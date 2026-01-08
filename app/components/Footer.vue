@@ -12,11 +12,13 @@
         </div>
     </section>
     <section class="info">
-        <h4>Adresse</h4>
-        <p>Kastetvej 36</p>
-        <p>9000 Aalborg</p>
-        <p>Tlf: 98 15 80 00</p>
-        <p>Mail: cafeullaterkelsenlondon@gmail.com</p>
+        <div class="contactSection">
+            <h4>Adresse</h4>
+            <p>Kastetvej 36</p>
+            <p>9000 Aalborg</p>
+            <p class="contact"><FontAwesomeIcon :icon="['fas', 'phone']" class="contantIcon" /> +45 98 15 80 00</p>
+            <p class="contact"><FontAwesomeIcon :icon="['fas', 'envelope']" class="contantIcon" /> cafeullaterkelsenlondon@gmail.com</p>
+        </div>
         <h4>Åbningstider</h4>
         <p>Mandag: lukket</p>
         <p>Tirsdag: 11:00 - 23:30</p>
@@ -30,6 +32,20 @@
 </template>
 
 <style scoped>
+.contantIcon{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.contact{
+    display: flex;
+    align-items: center;
+}
+
+.contactSection{
+    margin-bottom: 40px;
+}
 
 .icon{
     width: 40px;
@@ -45,11 +61,13 @@ footer{
 }
 
 .info p{
-    margin: 0 10px;
+    margin: 5px 10px;
+    font-family: "Indie Flower", cursive;
 }
 
 .info h4{
-    margin: 10px 10px
+    margin: 10px 10px;
+    font-family: "Poppins", sans-serif;
 }
 
 .cafeLogo{

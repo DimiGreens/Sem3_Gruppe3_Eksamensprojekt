@@ -32,7 +32,7 @@ defineProps({
   text-anchor="middle"
   dominant-baseline="middle"
   fill="#ffffff"
-  font-size="0.8rem"
+  font-size="0.6rem"
 >
   {{ label }}
 </text>

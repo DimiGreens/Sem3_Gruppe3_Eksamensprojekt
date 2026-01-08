@@ -1,3 +1,4 @@
+<!-- Copyright (c) 2026 by Louis (https://codepen.io/Louis-Luffy/pen/QWeMgpJ) -->
 <script setup>
 
 </script>

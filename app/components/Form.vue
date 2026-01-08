@@ -1,3 +1,4 @@
+<!-- Copyright (c) 2026 by Tarun Rao TD (https://codepen.io/tarunraotd/pen/Njowee) -->
 <!--Dette kode er inspireret af denne codepen https://codepen.io/tarunraotd/pen/Njoween uploadet af Tarun Rao TD -->
 <script setup>
 // Her importeres Ref og OnMounted fra vue så der kan laves reaktive variabler og sørger for at kompontnetn kan køre i DOM.
@@ -74,11 +75,11 @@ const sendEmail = () => {
   min-height: calc(100vh - 200px);
   padding: 30px 0 30px;
 }
-
+ 
 form {
   height: 100%;
 }
-
+ 
 input, textarea {
   display: block;
   width: calc(95% - 10px);
@@ -91,19 +92,19 @@ input, textarea {
   background: none;
   color: var(--purpleMenuMain);
 }
-
+ 
 input {
   height: 20%;
 }
-
+ 
 textarea {
   height: 60%;
 }
-
+ 
 input::placeholder, textarea::placeholder {
   color: var(--purpleMenuMain);
 }
-
+ 
 input[type="button"] {
   position: absolute;
   width: 70px;
@@ -118,25 +119,25 @@ input[type="button"] {
   transition: bottom 2s ease-in;
   box-shadow: var(--stdShadow);
 }
-
+ 
 input[type="button"].animate {
   bottom: calc(50% - 40px);
   right: calc(50% - 40px);
 }
-
+ 
 input[type="button"]:hover:not(:disabled) {
   background: var(--buttonsBlue);
   color: var(--yellowMenuMain);
   box-shadow: var(--hoverShadow);
 }
-
+ 
 .letter {
   position: relative;
   width: 300px;
   height: 300px;
   background: var(--yellowMenuMain);
-}   
-
+}  
+ 
 .letter::before {
   content: "";
   position: absolute;
@@ -149,24 +150,24 @@ input[type="button"]:hover:not(:disabled) {
   transform-origin: 100% 100%;
   transition: transform 1s ease-in, border-color 1s ease-in;
 }
-
+ 
 .letter.animate::before {
   transform: rotateX(180deg);
   border-color: transparent transparent var(--yellowMenuSecondary) transparent;
 }
-
+ 
 @media (min-width: 700px) {
   form {
     font-size: 22px;
   }
-
+ 
   form > input,
   form > textarea {
     font-size: 20px;
     padding: 12px;
     margin: 12px;
   }
-
+ 
   form > input[type="button"] {
     width: 70px;
     height: 70px;
@@ -174,17 +175,17 @@ input[type="button"]:hover:not(:disabled) {
     bottom: -50px;
     font-size: 15px;
   }
-
+ 
   form > input[type="button"].animate {
     bottom: calc(50% - 35px);
     right: calc(50% - 35px);
   }
-
+ 
   .letter {
     width: 350px;
     height: 350px;
   }
-
+ 
   .letter::before {
     top: -175px;
     border-width: 0 175px 175px 175px;

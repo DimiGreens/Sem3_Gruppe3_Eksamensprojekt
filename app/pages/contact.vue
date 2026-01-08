@@ -22,28 +22,8 @@ import Form from '../components/Form.vue';
     height: 30px;
 }
 
-section:nth-of-type(2) p{
-    display: flex;
-    align-items: center;
+h2{
+    margin-bottom: 100px;
 }
-
-.btnHolder{
-    display: flex;
-    justify-content: center;
-}
-
-form{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    padding-right: 10px;
-
-    p{
-        margin: 0.2rem 0;
-    }
-
-    input{
-        width: 100%;
-    }
 
 </style>

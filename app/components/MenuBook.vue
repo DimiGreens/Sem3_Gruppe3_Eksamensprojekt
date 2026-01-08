@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 
-// Modtag sider som prop
+// Props SKAL komme først
 const props = defineProps({
   pages: {
     type: Array,
@@ -10,13 +10,36 @@ const props = defineProps({
   },
   colors: {
     type: Array,
-    default: () => ['#f4c4a4', '#f5b093'] // standardfarver hvis ingen angivet
+    default: () => ['#f4c4a4', '#f5b093']
+  },
+  coverTitle: {
+    type: String,
+    default: "Ulla's mad"
+  },
+  coverSubtitle: {
+    type: String,
+    default: 'Noget til en hver smag'
   }
+})
+
+// Forside
+const coverPage = computed(() => {
+  return {
+    isCover: true,
+    title: props.coverTitle,
+    subTitle: props.coverSubtitle
+  }
+})
+
+// Samlede sider (forside + indhold)
+const bookPages = computed(() => {
+  return [coverPage.value, ...props.pages]
 })
 
 const currentPage = ref(0)
 const direction = ref('next')
-const totalPages = computed(() => props.pages.length)
+
+const totalPages = computed(() => bookPages.value.length)
 
 const nextPage = () => {
   if (currentPage.value < totalPages.value - 1) {
@@ -32,63 +55,82 @@ const prevPage = () => {
   }
 }
 
-/* Keyboard support */
 onMounted(() => {
   window.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') nextPage()
     if (e.key === 'ArrowLeft') prevPage()
   })
 })
+
 </script>
 
 <template>
 <div class="book-wrapper">
   <article class="book" aria-label="Menu bog">
     <section
-      v-for="(page, index) in props.pages"
-      :key="index"
-      class="page"
-      :class="{
-        active: index === currentPage,
-        flip: index === currentPage - 1 && direction === 'next',
-        flipBack: index === currentPage + 1 && direction === 'prev'
-      }"
-      :style="{
-  background: `repeating-linear-gradient(
-    90deg,
-    ${props.colors[0]} 0px,
-    ${props.colors[0]} 20px,
-    ${props.colors[1]} 20px,
-    ${props.colors[1]} 40px
-  )`
-}"
+  v-for="(page, index) in bookPages"
+  :key="index"
+  class="page"
+  :class="{
+    active: index === currentPage,
+    flip: index === currentPage - 1 && direction === 'next',
+    flipBack: index === currentPage + 1 && direction === 'prev',
+    cover: page.isCover
+  }"
+  :style="{
+    background: `repeating-linear-gradient(
+      90deg,
+      ${props.colors[0]} 0px,
+      ${props.colors[0]} 20px,
+      ${props.colors[1]} 20px,
+      ${props.colors[1]} 40px
+    )`
+  }"
+>
+  <template v-if="page.isCover">
+    <div class="cover-content">
+      <div class="coverBanner">
+        <h3>{{ page.title }}</h3>
+      </div>
+      <img class="coverImage" src="../assets/img/ullaTLogo.jpg" alt="">
+      <div class="subCoverBanner">
+        <p v-if="page.subTitle">{{ page.subTitle }}</p>
+      </div>
+    </div>
+  </template>
+
+  <template v-else>
+    <h2>{{ page.title }}</h2>
+
+    <div
+      class="dish"
+      v-for="(item, i) in page.items"
+      :key="i"
     >
-      <h2>{{ page.title }}</h2>
-      <!-- Liste af retter / afsnit -->
-      <ul>
-        <li v-for="(item, i) in page.items" :key="i">
-         {{ item.name }} {{ item.price }},-
-       </li>
-      </ul>
-    </section>
+      <h3>{{ item.name }}</h3>
+      <p>{{ item.desc }} - {{ item.price }},-</p>
+    </div>
+  </template>
+</section>
+
   </article>
 
   <!-- Bogmærker -->
   <nav class="bookmarks">
     <button
-      v-for="(page, index) in props.pages"
-      :key="index"
-      class="bookmark"
-      :class="{ active: index === currentPage }"
-      :style="{ top: `${index * 52}px`,
-    background: index === currentPage ? props.colors[1] : props.colors[0],
+  v-for="(page, index) in props.pages"
+  :key="index"
+  class="bookmark"
+  :class="{ active: index + 1 === currentPage }"
+  :style="{
+    top: `${index * 52}px`,
+    background: index + 1 === currentPage ? props.colors[1] : props.colors[0],
     color: '#fff'
   }"
-      @click="currentPage = index"
-      
-    >
-    {{ page.title }}
-    </button>
+  @click="currentPage = index + 1"
+>
+  {{ page.title }}
+</button>
   </nav>
   <nav class="controls" aria-label="Bladre navigation">
     <button
@@ -112,6 +154,58 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.coverBanner{
+  width: 290px;
+  height: 150px;
+  background-image: url(../assets/img/coverBannerSVG.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+
+  h3{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+  }
+}
+
+.coverImage{
+  width: 150px;
+  height: 150px;
+}
+
+.subCoverBanner{
+  width: 240px;
+  height: 100px;
+  background-image: url(../assets/img/coverSubBanner.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+
+  p{
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+  }
+}
+
+  .dish{
+    margin: 20px 0;
+
+    h3{
+      margin: 0;
+    }
+
+    p{
+      margin: 0;
+    }
+  }
+
 .controls button{
 
   background: none;
@@ -133,14 +227,12 @@ onMounted(() => {
   flex-direction: row-reverse;
 }
 
-/* (Her kan du beholde dit eksisterende CSS uden ændringer) */
 .book-wrapper {
   position: relative;
   width: fit-content;
   margin-bottom: 30px;
 }
 
-/* Din bog */
 .book {
   position: relative;
   width: 300px;
@@ -154,7 +246,7 @@ onMounted(() => {
   position: absolute;
 
   top: 2rem;
-  left: 100%;        /* starter præcis ved bogens højre kant */
+  left: 100%;
 
   display: flex;
   flex-direction: column;
@@ -184,10 +276,6 @@ onMounted(() => {
   transform: rotate(0deg);
 
   transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.bookmark.active {
-  background: #8b2c18;
 }
 
 
@@ -258,5 +346,29 @@ onMounted(() => {
     transition: none;
   }
 }
+
+.page.cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.cover-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cover-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.cover-content p {
+  opacity: 0.9;
+  font-style: italic;
+}
+
 
 </style>

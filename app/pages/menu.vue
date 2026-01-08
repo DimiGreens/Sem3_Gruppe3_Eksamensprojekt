@@ -34,10 +34,10 @@ const kat = [
   {
     title: 'Morgenmad',
     items: [
-      { name: 'Æg', price: 45 },
-      { name: 'Bacon', price: 25 },
-      { name: 'Ost', price: 75 },
-      { name: 'Ost', price: 75 },
+      { name: 'Æg', price: 45, desc: "Lækker æg" },
+      { name: 'Bacon', price: 25, desc: "Tester123" },
+      { name: 'Ost', price: 75, desc: "Tester123" },
+      { name: 'Ost', price: 75, desc: "Tester123" },
     ],
   },
   {
@@ -81,8 +81,8 @@ const dog = [
       <h1>Vi serverer god mad</h1>
       <p>Her på siden finder du alle vores menuer fra det i caféen til særlige anledninger. Ulla’s menuer opdateres løbende for at du får lige det du ønsker dig!</p>
       <div class="menues">
-        <MenuBook :pages="kat" />
-        <MenuBook :pages="dog" :colors="['#f6dfa2', '#f4d78b']" />
+        <MenuBook :pages="kat" :coverTitle="'Ullas morgenmad'" :coverSubtitle="'Mmmm, morgenmad'" />
+        <MenuBook :pages="dog" :colors="['#f6dfa2', '#f4d78b']" :coverTitle="'Lunch!'" :coverSubtitle="'Lækker lunch!'" />
         <h3>Har vi vækket apetitten?</h3>
         <div class="btnHolder">
           <Button label="Book bord" to="/book" />

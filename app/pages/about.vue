@@ -1,5 +1,17 @@
 <script setup>
-
+useHead({
+  title: "Café Ulla Therkelsen, London | Om os",
+  meta: [
+    {
+      name: "description", 
+      content: "Velkommen til Café Ulla Therkelsen, London. Farverig café, lækker mad og fede events."
+    }, 
+    { 
+      name: "keywords", 
+      content: "café, brunch, events, Aalborg, Ulla Therkelsen, mad"
+  }
+  ]
+})
 </script>
 
 <template>

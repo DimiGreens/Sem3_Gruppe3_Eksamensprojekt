@@ -7,9 +7,8 @@ export default defineNuxtConfig({
     preset: 'static'
   },
   app: {
-    baseURL: '/class/MMD-CSD-S24/10632176/MMD3/Tester/'
+    baseURL: '/class/MMD-CSD-S24/10632176/MMD3/cafe_ulla_t/'
   },
-
 
   css: [
     '@/assets/css/style.css'
